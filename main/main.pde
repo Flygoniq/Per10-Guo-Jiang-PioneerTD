@@ -1,8 +1,10 @@
-
+import java.io.*;
+import java.util.*;
 
 boolean drawgrid = false;
 
 void setup(){
+  loadImages();
   size(560,650);
   background(#4BC8F0);
   fill(#004B64);
@@ -10,7 +12,9 @@ void setup(){
   fill(#B4BEC8);
   rect(240,520,80,40);//base
   fill(#FFFF00);
-  rect(10,575,60,60);
+  rect(10,575,60,60);//yellow button
+  image(LightBuoyBase,20,585);
+  image(LightBuoyGun,37,585);
 }
 
 void draw(){
@@ -23,7 +27,7 @@ void draw(){
        line(0,i,560,i);
      }
   }
-  else{setup();}
+  else{setup();}//gonna need something less timeconsuming than this, like an abbreviated setup resetish thingy
 }
 
 void mouseClicked(){

@@ -3,6 +3,7 @@ import java.util.*;
 
 boolean drawgrid = false;
 boolean buoySelected = false;
+boolean setbuoy = false;
 PImage lightbuoy;
 
 void setup(){
@@ -29,8 +30,14 @@ void draw(){
   }
   else{backGround();}//gonna need something less timeconsuming than this, like an abbreviated setup resetish thingy
   println(mouseX + "," + mouseY);
-  while (buoySelected == true) {
-    image(lightbuoy,mouseX,mouseY);
+  if(!setbuoy){
+  setX(mouseX);
+  setY(mouseY);
+  }
+  if (buoySelected == true) {
+    backGround();
+    drawGrid();
+    image(lightbuoy,ghostx,ghosty);
   }
 }
 
@@ -41,8 +48,11 @@ void mouseClicked(){
   else{
     drawgrid = false;
   }
-  if (mouseY >585 && mouseY < 600 && mouseX >20 && mouseX < 30) {
+  if (mouseY >585 && mouseY < 625 && mouseX >20 && mouseX < 60) {
     buoySelected = true;
+  }
+  if (buoySelected = true && setbuoy == false) {
+    setbuoy = true;
   }
 }
 

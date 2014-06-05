@@ -1,23 +1,23 @@
 import java.io.*;
 import java.util.*;
 
-double ghostx = 0;
-double ghosty = 0;
+float ghostx = 0;
+float ghosty = 0;
 PImage ghost;
 
-void setX(double a){
+void setX(float a){
    ghostx = a;
 }
 
-void setY(double a ) {
+void setY(float a ) {
   ghosty = a;
 }
 
-double getX() {
+float getX() {
   return ghostx;
 }
 
-double getY() {
+float getY() {
   return ghosty;
 }
 void setImage(PImage n) {

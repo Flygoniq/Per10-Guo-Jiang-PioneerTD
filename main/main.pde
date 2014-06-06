@@ -59,15 +59,10 @@ void mouseClicked(){
   if (mouseY >585 && mouseY < 625 && mouseX >20 && mouseX < 60) {
     placeTower = true;
   }
-<<<<<<< HEAD
   else if (placeTower && !setTower) {
     addGun(lightbuoy, LightBuoyGun,ghostx,ghosty);
     setTower = true;
     placeTower = false;
-=======
-  if (buoySelected = true && setbuoy == false) {
-    setbuoy = true;
->>>>>>> 2304798dc1af4de6b1e5ceda5d0addeafb0cbcbb
   }
 }
 

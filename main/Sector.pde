@@ -30,19 +30,19 @@ class Sector{
     next = s;
   }
   
-  void getOccupied(boolean boo){
+  boolean getOccupied(){
     return occupied;
   }
-  void getBuildable(boolean boo){
+  boolean getBuildable(){
     return buildable;
   }
-  void getChecked(boolean boo){
+  boolean getChecked(){
     return checked;
   }
-  void getDist(int x){
-    return dist; 
+  int getDist(){
+    return dist;
   }
-  void getNext(Sector s){
+  Sector getNext(){
     return next;
   }
 }

@@ -13,17 +13,19 @@ void setY(float a ) {
   ghosty = a;
 }
 
-float getX() {
+void setImage(PImage n) {
+  ghost = n;
+}
+
+/*float getX(){
   return ghostx;
 }
 
 float getY() {
   return ghosty;
 }
-void setImage(PImage n) {
-  ghost = n;
-}
+
 PImage getImage() {
   return ghost;
 }
-
+*/

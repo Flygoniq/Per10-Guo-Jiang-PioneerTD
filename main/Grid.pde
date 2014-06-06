@@ -10,10 +10,10 @@ class Grid{
   public ArrayList<Sector> getEmpties(Sector n){
     //Sector[] temp = new Sector[4];
     ArrayList<Sector> temp = new ArrayList<Sector>();
-    if(world[(n.y)-1][(n.x)].getOccupied == false){temp.add(world[(n.y)-1][(n.x)]);}
-    if(world[(n.y)][(n.x)+1].getOccupied == false){temp.add(world[(n.y)][(n.x)+1]);}
-    if(world[(n.y)+1][(n.x)].getOccupied == false){temp.add(world[(n.y)+1][(n.x)]);}
-    if(world[(n.y)][(n.x)-1].getOccupied == false){temp.add(world[(n.y)][(n.x)-1]);}
+    if(world[(n.y)-1][(n.x)].getOccupied() == false){temp.add(world[(n.y)-1][(n.x)]);}
+    if(world[(n.y)][(n.x)+1].getOccupied() == false){temp.add(world[(n.y)][(n.x)+1]);}
+    if(world[(n.y)+1][(n.x)].getOccupied() == false){temp.add(world[(n.y)+1][(n.x)]);}
+    if(world[(n.y)][(n.x)-1].getOccupied() == false){temp.add(world[(n.y)][(n.x)-1]);}
     return temp;
   }
   

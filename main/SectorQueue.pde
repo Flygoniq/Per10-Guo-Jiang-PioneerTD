@@ -52,13 +52,13 @@ class SectorQueue{
     start = temp;
   }
   public Sector dequeue(){
-    if(root.getPrev() == null)throw new EmptyQueueException();
+    if(root.getPrev() == null)throw new NoSuchElementException();
     Sector temp = root.getPrev().getData();
     try{
       root.setPrev(root.getPrev().getPrev());
       root.getPrev().getPrev().setNext(root);
     }
-    catch(exception e){root.setPrev(null);}
+    catch(Exception e){root.setPrev(null);}
     return temp;
   }
 }

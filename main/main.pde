@@ -7,6 +7,7 @@ boolean placeTower = false;
 boolean setTower = false;
 PImage lightbuoy;
 Grid grid;
+int resources;
 //Checkpoint lastcp;
 
 

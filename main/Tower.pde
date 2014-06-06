@@ -1,4 +1,5 @@
 class Tower{
+<<<<<<< HEAD
   PImage gun;
   float Xcor;
   float Ycor;
@@ -32,3 +33,7 @@ class Tower{
   PImage getGun() {
     return gun;
   }
+=======
+  
+}
+>>>>>>> 2304798dc1af4de6b1e5ceda5d0addeafb0cbcbb

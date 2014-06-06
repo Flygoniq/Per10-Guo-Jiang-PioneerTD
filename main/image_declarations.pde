@@ -1,4 +1,4 @@
-PImage LightBuoyBase, LightBuoyGun;
+PImage LightBuoyBase, LightBuoyGun, PTBoat;
 void loadImages(){
   LightBuoyBase = loadImage("Images/LightBuoyBase.png");
   LightBuoyGun = loadImage("Images/LightBuoyGun.png");

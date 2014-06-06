@@ -5,8 +5,11 @@ boolean drawgrid = false;
 boolean buoySelected = false;
 boolean setbuoy = false;
 PImage lightbuoy;
+Grid grid;
+Checkpoint lastcp;
 
 void setup(){
+  grid = new Grid();
   backGround();
 }
 void backGround() {
@@ -51,7 +54,7 @@ void mouseClicked(){
   if (mouseY >585 && mouseY < 625 && mouseX >20 && mouseX < 60) {
     buoySelected = true;
   }
-  else if (buoySelected = true && setbuoy == false) {
+  if (buoySelected = true && setbuoy == false) {
     setbuoy = true;
   }
 }

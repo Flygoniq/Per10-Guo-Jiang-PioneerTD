@@ -1,30 +1,26 @@
-ArrayList<PImage> Towers = new ArrayList<PImage>();
-ArrayList<PImage> Guns = new ArrayList<PImage>();
-ArrayList<Float> Xcor = new ArrayList<Float>();
-ArrayList<Float> Ycor = new ArrayList<Float>();
+ArrayList<Tower> Towers = new ArrayList<Tower>();
 int count = 0;
 
 void DrawGuns() {
   for(int i = 0; i < count; i++ ) {
-      image(Towers.get(i),ghostx,ghosty);
-      image(Guns.get(i), ghostx + 17, ghosty);
+      Tower t = Towers.get(i);
+      image(t.getBuoy(),t.getXcor(),t.getYcor());
+      image(t.getGun(), t.getXcor() + 17, t.getYcor());
   }
 }
   
-void addGun(PImage p, PImage g, float x, float y) {
+void addTower(PImage p, PImage g, float x, float y) {
   count ++;
-  Towers.add(p);
-  Guns.add(g);
-  Xcor.add(x);
-  Ycor.add(y);
+  Tower t = new Tower();
+  t.setYcor(y);
+  t.setXcor(x);
+  t.setGun(g);
+  t.setBuoy(p);
+  Towers.add(t);
 }
 
-void remove(PImage p) {
-  int i = Towers.indexOf(p);
-  Towers.remove(p);
-  Guns.remove(g);
-  Xcor.remove(i);
-  Ycor.remove(i);
+void remove(Tower t) {
+  Towers.remove(t);
   count --;
 }
 

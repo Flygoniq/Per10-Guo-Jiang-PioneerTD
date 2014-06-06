@@ -12,7 +12,7 @@ class Tower{
     Ycor = a;
   }
   
-  void setImage(PImage p) {
+  void setGun(PImage p) {
     gun = p;
   }
   

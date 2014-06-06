@@ -7,7 +7,7 @@ boolean placeTower = false;
 boolean setTower = false;
 PImage lightbuoy;
 Grid grid;
-Checkpoint lastcp;
+//Checkpoint lastcp;
 
 
 void setup(){
@@ -35,17 +35,17 @@ void draw(){
     drawGrid();
   }
   else{backGround();}//gonna need something less timeconsuming than this, like an abbreviated setup resetish thingy
-  println(mouseX + "," + mouseY);
-  if(!setTower){
+  //println(mouseX + "," + mouseY);
+  if(placeTower){
   setX(mouseX-20);
   setY(mouseY-20);
+  }
+  if (setTower){
+    DrawGuns();
   }
   if (placeTower) {
     drawGrid();
     image(lightbuoy,ghostx,ghosty);
-  }
-  if (setTower){
-    DrawGuns();
   }
 }
 
@@ -59,8 +59,8 @@ void mouseClicked(){
   if (mouseY >585 && mouseY < 625 && mouseX >20 && mouseX < 60) {
     placeTower = true;
   }
-  else if (placeTower && !setTower) {
-    addGun(lightbuoy, LightBuoyGun,ghostx,ghosty);
+  else if (placeTower) {
+    addTower(lightbuoy, LightBuoyGun,(((int)((ghostx+20)/40))*40),(((int)((ghosty+20)/40))*40));
     setTower = true;
     placeTower = false;
   }

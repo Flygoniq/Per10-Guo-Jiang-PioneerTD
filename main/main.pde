@@ -1,10 +1,12 @@
 import java.io.*;
 import java.util.*;
 
+
 boolean drawgrid = false;
-boolean buoySelected = false;
-boolean setbuoy = false;
+boolean placeTower = false;
+boolean setTower = false;
 PImage lightbuoy;
+
 
 void setup(){
   backGround();
@@ -25,19 +27,22 @@ void backGround() {
 }
 
 void draw(){
+  backGround();
   if (drawgrid){
     drawGrid();
   }
   else{backGround();}//gonna need something less timeconsuming than this, like an abbreviated setup resetish thingy
   println(mouseX + "," + mouseY);
-  if(!setbuoy){
-  setX(mouseX);
-  setY(mouseY);
+  if(!setTower){
+  setX(mouseX-20);
+  setY(mouseY-20);
   }
-  if (buoySelected == true) {
-    backGround();
+  if (placeTower) {
     drawGrid();
     image(lightbuoy,ghostx,ghosty);
+  }
+  if (setTower){
+    DrawGuns();
   }
 }
 
@@ -49,10 +54,12 @@ void mouseClicked(){
     drawgrid = false;
   }
   if (mouseY >585 && mouseY < 625 && mouseX >20 && mouseX < 60) {
-    buoySelected = true;
+    placeTower = true;
   }
-  else if (buoySelected = true && setbuoy == false) {
-    setbuoy = true;
+  else if (placeTower && !setTower) {
+    addGun(lightbuoy, LightBuoyGun,ghostx,ghosty);
+    setTower = true;
+    placeTower = false;
   }
 }
 

@@ -51,7 +51,7 @@ void mouseClicked(){
   if (mouseY >585 && mouseY < 625 && mouseX >20 && mouseX < 60) {
     buoySelected = true;
   }
-  if (buoySelected = true && setbuoy == false) {
+  else if (buoySelected = true && setbuoy == false) {
     setbuoy = true;
   }
 }

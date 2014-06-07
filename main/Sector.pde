@@ -17,9 +17,10 @@ class Sector{
   }
   
   void setcp(){
-    if(x == 13*40 && y == 6*40;){
-      cp = new cp(x+20,y+40);
-    cp = new Checkpoint(abs(next.x-x),abs(next.y-y),next.cp);
+    if(x == 13*40 && y == 6*40){
+      cp = new Checkpoint(x+20,y+40);
+    }
+    cp = new Checkpoint(((next.x+x)/2)+20,((next.y+y)/2)+20,next.cp);
   }
   void setOccupied(boolean boo){
     occupied = boo;
@@ -52,6 +53,8 @@ class Sector{
   Sector getNext(){
     return next;
   }
-  
+  Checkpoint getcp(){
+    return cp;
+  }
   
 }

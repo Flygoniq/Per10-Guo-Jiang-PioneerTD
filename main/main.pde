@@ -60,7 +60,7 @@ void mouseClicked(){
   else{
     drawgrid = false;
   }
-  if (mouseY >585 && mouseY < 625 && mouseX >20 && mouseX < 60) {
+  if (checkMouse(20,60,585,625)){
     placeTower = true;
   }
   else if (placeTower) {
@@ -79,4 +79,8 @@ void drawGrid() {
        line(0,i,560,i);
      }
 }
+boolean checkMouse(int startX, int endX, int startY, int endY) {
+  return (mouseY > startY && mouseX>startX && mouseY<endY && mouseX < endX);
+}
+
   

@@ -8,12 +8,14 @@ boolean setTower = false;
 PImage lightbuoy;
 Grid grid;
 int resources;
+PTBoat tester;
 //Checkpoint lastcp;
 
 
 void setup(){
   grid = new Grid();
   backGround();
+  tester = new PTBoat();
 }
 void backGround() {
   loadImages();
@@ -48,6 +50,7 @@ void draw(){
     drawGrid();
     image(lightbuoy,ghostx,ghosty);
   }
+  tester.act();
 }
 
 void mouseClicked(){

@@ -28,6 +28,9 @@ void backGround() {
   lightbuoy = LightBuoyBase;
   image(lightbuoy,20,585);
   image(LightBuoyGun,37,585);
+  rect(100,575,60,60);
+  image(RocketBase, 110,585);
+  image(RocketGun, 111,583);
 }
 
 void draw(){
@@ -35,8 +38,8 @@ void draw(){
   if (drawgrid){
     drawGrid();
   }
-  else{backGround();}//gonna need something less timeconsuming than this, like an abbreviated setup resetish thingy
-  //println(mouseX + "," + mouseY);
+  else{backGround();}
+  println(mouseX + "," + mouseY);
   if(placeTower){
   setX(mouseX-20);
   setY(mouseY-20);

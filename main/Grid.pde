@@ -24,7 +24,7 @@ class Grid{
     return temp;
   }
   
-  public void path(){
+  /*public void path(){
     for(Sector s : world){
       s.setChecked(false); 
     }
@@ -36,7 +36,7 @@ class Grid{
     }
     path(q.dequeue());
     
-  }
+  }*/
   public void path(Sector x){
     for(Sector s : getEmpties(x)){
       s.setDist(x.getDist()+1);
@@ -46,12 +46,12 @@ class Grid{
     }
     path(q.dequeue());
   }
-  public void cpPrep(){
+  /*public void cpPrep(){
      a.get(0).set
      for(int i = 1;i<a.size();i++){
        
      }
-  }
+  }*/
 }
     
     

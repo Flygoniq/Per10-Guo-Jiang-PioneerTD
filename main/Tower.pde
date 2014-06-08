@@ -4,6 +4,14 @@ class Tower{
   float Ycor;
   PImage buoy;
   
+  public Tower() {
+  }
+  
+  public Tower(PImage p, PImage g) {
+    gun = g;
+    buoy = p;
+  }
+  
   void setXcor(float a) {
     Xcor = a;
   }

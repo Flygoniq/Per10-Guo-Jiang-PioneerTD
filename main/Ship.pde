@@ -19,7 +19,7 @@ class Ship{
     x += speed*(2/6)*acos(direction);
     y += speed*(2/6)*asin(direction);  
   }
-  void turn(){
+  /*void turn(){
     float angle = (atan2(target.x-x,target.y-y)-direction);
     if(angle>90)direction -= -180;
     if(angle<-90)direction += 180;
@@ -31,5 +31,5 @@ class Ship{
   void act(){
     turn();
     move();
-  }
+  }*/
 }

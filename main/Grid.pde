@@ -35,6 +35,7 @@ class Grid{
         s.setChecked(false); 
       }
     }
+    //ArrayList<Sector> holder = getEmpties(world[13][6]);
     for(Sector s : getEmpties(world[13][6])){
       s.setDist(world[13][6].getDist()+1);
       s.setNext(world[13][6]);
@@ -42,7 +43,13 @@ class Grid{
       a.add(s);
       //stack.push(s);
     }
+<<<<<<< HEAD
     path(q.dequeue());
+=======
+    if(q.size>0){
+      path(q.dequeue());
+    }
+>>>>>>> 02601a4db0be269674b974efc5ea0818cedc5f00
   }
   public void path(Sector x){
     /*for(Sector s : getEmpties(x)){
@@ -52,7 +59,13 @@ class Grid{
       a.add(s);
       //stack.push(s);
     }
+<<<<<<< HEAD
     path(q.dequeue());*/
+=======
+    if(q.size>0){
+      path(q.dequeue());
+    }
+>>>>>>> 02601a4db0be269674b974efc5ea0818cedc5f00
   }
   public void cpPrep(){
      for(int i = 0;i<a.size();i++){

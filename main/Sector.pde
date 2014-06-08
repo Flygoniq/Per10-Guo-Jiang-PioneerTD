@@ -20,12 +20,7 @@ class Sector{
     if(x == 13*40 && y == 6*40){
       cp = new Checkpoint(x+20,y+40);
     }
-    cp = new Checkpoint((
-    (next.x
-    +x)
-    /2)+20,
-    ((next.y+y)/2)+20,
-    next.cp);
+    cp = new Checkpoint(((next.x+x)/2)+20,((next.y+y)/2)+20,next.cp);
   }
   void setOccupied(boolean boo){
     occupied = boo;

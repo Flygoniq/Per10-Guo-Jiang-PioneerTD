@@ -18,6 +18,7 @@ class Grid{
       } 
     }
     world[13][6].setDist(0);
+    world[13][6].setNext(new Sector(280,520));
     path();
     cpPrep();
   }

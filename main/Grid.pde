@@ -36,6 +36,7 @@ class Grid{
       try{
         if(world[y-1][x].getOccupied() == false && world[y-1][x].getDist()>s.getDist()){
           world[y-1][x].setDist(s.getDist()+1);
+          world[y-1][x].setNext(s);
           temp.add(world[y-1][x]);
           a.add(world[y-1][x]);
         }
@@ -43,6 +44,7 @@ class Grid{
       try{
         if(world[y][x+1].getOccupied() == false && world[y][x+1].getDist()>s.getDist()){
           world[y][x+1].setDist(s.getDist()+1);
+          world[y][x+1].setNext(s);
           temp.add(world[y][x+1]);
           a.add(world[y][x+1]);
         }
@@ -50,6 +52,7 @@ class Grid{
       try{
         if(world[y+1][x].getOccupied() == false && world[y+1][x].getDist()>s.getDist()){
           world[y+1][x].setDist(s.getDist()+1);
+          world[y+1][x].setNext(s);
           temp.add(world[y+1][x]);
           a.add(world[y+1][x]);
         }
@@ -57,6 +60,7 @@ class Grid{
       try{
         if(world[y][x-1].getOccupied() == false && world[y][x-1].getDist()>s.getDist()){
           world[y][x-1].setDist(s.getDist()+1);
+          world[y][x-1].setNext(s);
           temp.add(world[y][x-1]);
           a.add(world[y][x-1]);
         }
@@ -67,20 +71,6 @@ class Grid{
     }
   }
       
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
   void show(){
     for(int i = 0;i<14;i++){
       for(int j = 0;j<14;j++){
@@ -92,6 +82,7 @@ class Grid{
   
   public void cpPrep(){
      for(int i = 0;i<a.size();i++){
+       println(a.get(i).y+" "+a.get(i).x);
        a.get(i).setcp();
      }
   }

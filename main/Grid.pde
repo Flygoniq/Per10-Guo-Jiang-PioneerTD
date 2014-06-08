@@ -43,17 +43,9 @@ class Grid{
       a.add(s);
       //stack.push(s);
     }
-<<<<<<< HEAD
     if(q.size>0){
       path(q.dequeue());
     }
-=======
-    path(q.dequeue());
-<<<<<<< HEAD
-    
-=======
->>>>>>> 34bdf4af7b608d5897f9796f77db8e5a248f7326
->>>>>>> 08f43ce7cc0abe3f590d011ded5b22c8823cc7cf
   }
   public void path(Sector x){
     for(Sector s : getEmpties(x)){
@@ -67,10 +59,6 @@ class Grid{
       path(q.dequeue());
     }
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> 34bdf4af7b608d5897f9796f77db8e5a248f7326
   public void cpPrep(){
      for(int i = 0;i<a.size();i++){
        a.get(i).setcp();

@@ -10,6 +10,8 @@ int resources;
 PTBoat tester;
 Tower current;
 boolean fire = true;
+float tick;
+float m;
 //Checkpoint lastcp;
 
 
@@ -49,6 +51,7 @@ void draw(){
   if (setTower){
     DrawGuns();
     if (current.fire){
+      m = m+1;
       fire();
     }
   }

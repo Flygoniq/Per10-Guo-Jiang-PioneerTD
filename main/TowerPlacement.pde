@@ -20,7 +20,7 @@ void addTower(PImage b, PImage g,PImage p, float x, float y) {
   Towers.add(t);
 }
 
-void remove(Tower t) {
+void removeTower(Tower t) {
   Towers.remove(t);
   count --;
 }
@@ -28,6 +28,7 @@ void remove(Tower t) {
 void fire() {
   for (int i = 0; i < count; i++) {
     Tower t = Towers.get(i);
-    image(t.getProjectile() ,t.getXcor(),t.getYcor()-10);
+    addProjectile(t.getProjectile()
+    image(p.getProjectile(), t.getXcor() + m*p.getXprogression(),t.getYcor() - 10 + m*p.getYprogression());
   }
 }

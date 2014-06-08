@@ -1,13 +1,13 @@
 
 class Grid{
   Sector[][]world;
-  SectorQueue q;
+  //SectorQueue q;
   //Stack stack;
   ArrayList<Sector> a;
   
   public Grid(){
     world = new Sector[14][14];
-    q = new SectorQueue();
+    //q = new SectorQueue();
     a = new ArrayList<Sector>();
     //stack = new Stack();    
     for(int i = 0;i<14;i++){
@@ -39,33 +39,25 @@ class Grid{
     for(Sector s : getEmpties(world[13][6])){
       s.setDist(world[13][6].getDist()+1);
       s.setNext(world[13][6]);
-      q.enqueue(s);
+      //q.enqueue(s);
       a.add(s);
       //stack.push(s);
     }
-<<<<<<< HEAD
-    path(q.dequeue());
-=======
-    if(q.size>0){
+    /*(if(q.size>0){
       path(q.dequeue());
-    }
->>>>>>> 02601a4db0be269674b974efc5ea0818cedc5f00
+    }*/
   }
   public void path(Sector x){
-    /*for(Sector s : getEmpties(x)){
+    for(Sector s : getEmpties(x)){
       s.setDist(x.getDist()+1);
       s.setNext(x);
-      q.enqueue(s);
+      //q.enqueue(s);
       a.add(s);
       //stack.push(s);
     }
-<<<<<<< HEAD
-    path(q.dequeue());*/
-=======
-    if(q.size>0){
+    /*(if(q.size>0){
       path(q.dequeue());
-    }
->>>>>>> 02601a4db0be269674b974efc5ea0818cedc5f00
+    }*/
   }
   public void cpPrep(){
      for(int i = 0;i<a.size();i++){
@@ -73,6 +65,7 @@ class Grid{
      }
   }
 }
+
     
     
 

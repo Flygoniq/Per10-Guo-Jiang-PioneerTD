@@ -4,8 +4,9 @@ class Tower{
   float Ycor;
   PImage buoy;
   boolean fire = true;
-  Projectile projectile;
+  PImage projectile;
   float angle = 0;
+  float firingspeed;
   
   public Tower() {
   }
@@ -13,7 +14,7 @@ class Tower{
   public Tower(PImage b, PImage g,PImage p) {
     gun = g;
     buoy = b;
-    projectile = p;
+    projectile=p;
   }
   
   void setXcor(float a) {
@@ -31,8 +32,8 @@ class Tower{
   void setBuoy(PImage p) {
     buoy = p;
   }
-  void setProjectile(PImage p ) {
-    projectile = p;
+  void setProjectile(PImage p) {
+    projectile=p;
   }
   
   

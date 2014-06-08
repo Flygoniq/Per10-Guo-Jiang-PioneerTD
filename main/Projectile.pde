@@ -1,8 +1,16 @@
 class Projectile {
   PImage projectile;
   Ship destination;
-  float Xprogression;
-  float Yprogression;
+  float Xprogression = 0;
+  float Yprogression = -10;
+  
+  
+  public Projectile(){}
+  public Projectile(PImage p, float x, float y,){
+    projectile = p;
+    Xprogression = x;
+    Yprogression = y;
+  }
   
   PImage getProjectile() {
     return projectile;
@@ -16,6 +24,11 @@ class Projectile {
   void setYprogression (float n) {
     Yprogression = n;
   }
-  
- 
+  float getXprogression() {
+    return Xprogression;
+  }
+  float getYprogression() {
+    return Yprogression;
+  }
+    
 }

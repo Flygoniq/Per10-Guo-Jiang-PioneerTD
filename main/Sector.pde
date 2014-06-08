@@ -11,7 +11,7 @@ class Sector{
    buildable = true;
    this.x = x;
    this.y = y;
-   dist = 0;
+   dist = 999;
    next = null;
    cp = null;
   }

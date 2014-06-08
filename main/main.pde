@@ -59,7 +59,7 @@ void draw(){
     drawGrid();
     image(current.getBuoy(),ghostx,ghosty);
   }
-  //tester.act();
+  tester.act();
 }
 
 void mouseClicked(){

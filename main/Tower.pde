@@ -3,13 +3,17 @@ class Tower{
   float Xcor;
   float Ycor;
   PImage buoy;
+  boolean fire = true;
+  Projectile projectile;
+  float angle = 0;
   
   public Tower() {
   }
   
-  public Tower(PImage p, PImage g) {
+  public Tower(PImage b, PImage g,PImage p) {
     gun = g;
-    buoy = p;
+    buoy = b;
+    projectile = p;
   }
   
   void setXcor(float a) {
@@ -27,6 +31,10 @@ class Tower{
   void setBuoy(PImage p) {
     buoy = p;
   }
+  void setProjectile(PImage p ) {
+    projectile = p;
+  }
+  
   
   float getYcor() {
     return Ycor;
@@ -39,5 +47,9 @@ class Tower{
   }
   PImage getGun() {
     return gun;
+  }
+  
+  PImage getProjectile() {
+    return projectile;
   }
 }

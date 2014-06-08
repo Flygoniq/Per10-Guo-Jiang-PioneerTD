@@ -9,6 +9,7 @@ Grid grid;
 int resources;
 PTBoat tester;
 Tower current;
+boolean fire = true;
 //Checkpoint lastcp;
 
 
@@ -40,13 +41,16 @@ void draw(){
     drawGrid();
   }
   else{backGround();}
-  println(mouseX + "," + mouseY);
+  //println(mouseX + "," + mouseY);
   if(placeTower){
   setX(mouseX-20);
   setY(mouseY-20);
   }
   if (setTower){
     DrawGuns();
+    if (current.fire){
+      fire();
+    }
   }
   if (placeTower) {
     drawGrid();
@@ -63,16 +67,16 @@ void mouseClicked(){
     drawgrid = false;
   }
   if (checkMouse(20,60,585,625)) {
-    current = new Tower(LightBuoyBase,LightBuoyGun);
+    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile);
   }
   if (checkMouse(111,150,585,625)) {
-    current = new Tower(RocketBase, RocketGun);
+    current = new Tower(RocketBase, RocketGun,RocketGun);
   }
   if (checkMouse("All Towers")){
     placeTower = true;
   }
   else if (placeTower) {
-    addTower(current.getBuoy(), current.getGun(),(((int)((ghostx+20)/40))*40),(((int)((ghosty+20)/40))*40));
+    addTower(current.getBuoy(), current.getGun(),current.getProjectile(),(((int)((ghostx+20)/40))*40),(((int)((ghosty+20)/40))*40));
     grid.world[(int)(ghostx+20)/40][(int)(ghosty+20)/40].occupied = true;
     setTower = true;
     placeTower = false;

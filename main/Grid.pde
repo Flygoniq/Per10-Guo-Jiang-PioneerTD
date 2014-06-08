@@ -43,25 +43,17 @@ class Grid{
       //stack.push(s);
     }
     path(q.dequeue());
-<<<<<<< HEAD
-    
-=======
->>>>>>> 34bdf4af7b608d5897f9796f77db8e5a248f7326
   }
   public void path(Sector x){
-    for(Sector s : getEmpties(x)){
+    /*for(Sector s : getEmpties(x)){
       s.setDist(x.getDist()+1);
       s.setNext(x);
       q.enqueue(s);
       a.add(s);
       //stack.push(s);
     }
-    path(q.dequeue());
+    path(q.dequeue());*/
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> 34bdf4af7b608d5897f9796f77db8e5a248f7326
   public void cpPrep(){
      for(int i = 0;i<a.size();i++){
        a.get(i).setcp();

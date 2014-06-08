@@ -15,15 +15,17 @@ class Grid{
         world[i][j] = new Sector(i*40,j*40);
       } 
     }
+    path();
+    cpPrep();
   }
   
   public ArrayList<Sector> getEmpties(Sector n){
     //Sector[] temp = new Sector[4];
     ArrayList<Sector> temp = new ArrayList<Sector>();
-    if(world[(n.y)-1][(n.x)].getOccupied() == false){temp.add(world[(n.y)-1][(n.x)]);}
-    if(world[(n.y)][(n.x)+1].getOccupied() == false){temp.add(world[(n.y)][(n.x)+1]);}
-    if(world[(n.y)+1][(n.x)].getOccupied() == false){temp.add(world[(n.y)+1][(n.x)]);}
-    if(world[(n.y)][(n.x)-1].getOccupied() == false){temp.add(world[(n.y)][(n.x)-1]);}
+    try{if(world[(n.y/40)-1][(n.x/40)].getOccupied() == false){temp.add(world[(n.y/40)-1][(n.x/40)]);}}catch(Exception e){}
+    try{if(world[(n.y/40)][(n.x/40)+1].getOccupied() == false){temp.add(world[(n.y/40)][(n.x/40)+1]);}}catch(Exception e){}
+    try{if(world[(n.y/40)+1][(n.x/40)].getOccupied() == false){temp.add(world[(n.y/40)+1][(n.x/40)]);}}catch(Exception e){}
+    try{if(world[(n.y/40)][(n.x/40)-1].getOccupied() == false){temp.add(world[(n.y/40)][(n.x/40)-1]);}}catch(Exception e){}
     return temp;
   }
   
@@ -41,7 +43,10 @@ class Grid{
       //stack.push(s);
     }
     path(q.dequeue());
+<<<<<<< HEAD
     
+=======
+>>>>>>> 34bdf4af7b608d5897f9796f77db8e5a248f7326
   }
   public void path(Sector x){
     for(Sector s : getEmpties(x)){
@@ -53,7 +58,10 @@ class Grid{
     }
     path(q.dequeue());
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34bdf4af7b608d5897f9796f77db8e5a248f7326
   public void cpPrep(){
      for(int i = 0;i<a.size();i++){
        a.get(i).setcp();

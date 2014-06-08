@@ -5,7 +5,7 @@ void DrawGuns() {
   for(int i = 0; i < count; i++ ) {
       Tower t = Towers.get(i);
       image(t.getBuoy(),t.getXcor(),t.getYcor());
-      image(t.getGun(), t.getXcor() + 17, t.getYcor());
+      image(t.getGun(), t.getXcor(), t.getYcor());
   }
 }
   

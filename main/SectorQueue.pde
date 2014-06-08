@@ -39,9 +39,12 @@ class SectorQueue{
   }
   
   private Node root,start;
+  int size;
+  
   public SectorQueue(){
     root = new Node();
     start = root;
+    size = 0;
   }
   
   public void enqueue(Sector s){
@@ -52,6 +55,7 @@ class SectorQueue{
     temp.setNext(start);
     start.setPrev(temp);
     start = temp;
+    size++;
   }
   public Sector dequeue(){
     if(root.getPrev() == null)throw new NoSuchElementException();
@@ -61,6 +65,7 @@ class SectorQueue{
       root.getPrev().getPrev().setNext(root);
     }
     catch(Exception e){root.setPrev(null);}
+    size--;
     return temp;
   }
 }

@@ -9,7 +9,7 @@ void DrawGuns() {
   }
 }
   
-void addTower(PImage b, PImage g,PImage p, float x, float y) {
+void addTower(PImage b, PImage g,PImage p, float f, float x, float y) {
   count ++;
   Tower t = new Tower();
   t.setYcor(y);
@@ -17,6 +17,7 @@ void addTower(PImage b, PImage g,PImage p, float x, float y) {
   t.setGun(g);
   t.setBuoy(b);
   t.setProjectile(p);
+  t.setFiringspeed(f);
   Towers.add(t);
 }
 
@@ -28,7 +29,9 @@ void removeTower(Tower t) {
 void fire() {
   for (int i = 0; i < count; i++) {
     Tower t = Towers.get(i);
-    addProjectile(t.getProjectile()
-    image(p.getProjectile(), t.getXcor() + m*p.getXprogression(),t.getYcor() - 10 + m*p.getYprogression());
+    if (tick % t.getFiringspeed() == 0){
+    addProjectile(t.getProjectile(),0,-10,t.getXcor(), t.getYcor() - 10);
+    }
   }
+  Projectilefire();
 }

@@ -1,22 +1,14 @@
 
 class Grid{
   Sector[][]world;
-<<<<<<< HEAD
-  //SectorQueue q;
-=======
   Queue<Sector> fringe;
->>>>>>> 66cba409ce4ece5f1a001fc891f7693c86e01912
   //Stack stack;
   ArrayList<Sector> a;
   int pathcount;
   
   public Grid(){
     world = new Sector[14][14];
-<<<<<<< HEAD
-    //q = new SectorQueue();
-=======
     fringe = new LinkedList<Sector>();
->>>>>>> 66cba409ce4ece5f1a001fc891f7693c86e01912
     a = new ArrayList<Sector>();
     pathcount = 0;
     //stack = new Stack();    
@@ -28,41 +20,10 @@ class Grid{
     world[13][6].setDist(0);
     world[13][6].setNext(new Sector(280,520));
     path();
-    cpPrep();
   }
   
   
-<<<<<<< HEAD
-  public void path(){
-    for(Sector[] ss : world){
-      for(Sector s : ss){
-        s.setChecked(false); 
-      }
-    }
-    //ArrayList<Sector> holder = getEmpties(world[13][6]);
-    for(Sector s : getEmpties(world[13][6])){
-      s.setDist(world[13][6].getDist()+1);
-      s.setNext(world[13][6]);
-      //q.enqueue(s);
-      a.add(s);
-      //stack.push(s);
-    }
-    /*(if(q.size>0){
-      path(q.dequeue());
-    }*/
-  }
-  public void path(Sector x){
-    for(Sector s : getEmpties(x)){
-      s.setDist(x.getDist()+1);
-      s.setNext(x);
-      //q.enqueue(s);
-      a.add(s);
-      //stack.push(s);
-    }
-    /*(if(q.size>0){
-      path(q.dequeue());
-    }*/
-=======
+
   void path(){
     fringe.add(world[13][6]);
     a.add(world[13][6]);
@@ -118,15 +79,8 @@ class Grid{
       } 
       println();
     }
->>>>>>> 66cba409ce4ece5f1a001fc891f7693c86e01912
   }
   
-  public void cpPrep(){
-     for(int i = 0;i<a.size();i++){
-       println(a.get(i).y+" "+a.get(i).x);
-       a.get(i).setcp();
-     }
-  }
 }
 
     

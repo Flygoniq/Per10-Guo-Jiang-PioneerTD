@@ -11,10 +11,11 @@ class Tower{
   public Tower() {
   }
   
-  public Tower(PImage b, PImage g,PImage p) {
+  public Tower(PImage b, PImage g,PImage p,float n) {
     gun = g;
     buoy = b;
     projectile=p;
+    firingspeed = n;
   }
   
   void setXcor(float a) {
@@ -52,5 +53,11 @@ class Tower{
   
   PImage getProjectile() {
     return projectile;
+  }
+  float getFiringspeed() {
+    return firingspeed;
+  }
+  void setFiringspeed(float n) {
+    firingspeed = n;
   }
 }

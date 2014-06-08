@@ -10,7 +10,7 @@ int resources;
 PTBoat tester;
 Tower current;
 boolean fire = true;
-float tick;
+float tick= 0;
 float m;
 //Checkpoint lastcp;
 
@@ -38,6 +38,7 @@ void backGround() {
 }
 
 void draw(){
+  System.out.println(tick);
   backGround();
   if (drawgrid){
     drawGrid();
@@ -60,6 +61,7 @@ void draw(){
     image(current.getBuoy(),ghostx,ghosty);
   }
   tester.act();
+  tick++;
 }
 
 void mouseClicked(){
@@ -70,16 +72,16 @@ void mouseClicked(){
     drawgrid = false;
   }
   if (checkMouse(20,60,585,625)) {
-    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile);
+    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,5);
   }
   if (checkMouse(111,150,585,625)) {
-    current = new Tower(RocketBase, RocketGun,RocketGun);
+    current = new Tower(RocketBase, RocketGun,RocketGun,10);
   }
   if (checkMouse("All Towers")){
     placeTower = true;
   }
   else if (placeTower) {
-    addTower(current.getBuoy(), current.getGun(),current.getProjectile(),(((int)((ghostx+20)/40))*40),(((int)((ghosty+20)/40))*40));
+    addTower(current.getBuoy(), current.getGun(),current.getProjectile(),current.getFiringspeed(),(((int)((ghostx+20)/40))*40),(((int)((ghosty+20)/40))*40));
     grid.world[(int)(ghostx+20)/40][(int)(ghosty+20)/40].occupied = true;
     setTower = true;
     placeTower = false;

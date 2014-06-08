@@ -15,29 +15,25 @@ class Grid{
         world[i][j] = new Sector(i*40,j*40);
       } 
     }
+    path();
+    cpPrep();
   }
   
   public ArrayList<Sector> getEmpties(Sector n){
     //Sector[] temp = new Sector[4];
     ArrayList<Sector> temp = new ArrayList<Sector>();
-    if(world[(n.y)-1][(n.x)].getOccupied() == false){temp.add(world[(n.y)-1][(n.x)]);}
-    if(world[(n.y)][(n.x)+1].getOccupied() == false){temp.add(world[(n.y)][(n.x)+1]);}
-    if(world[(n.y)+1][(n.x)].getOccupied() == false){temp.add(world[(n.y)+1][(n.x)]);}
-    if(world[(n.y)][(n.x)-1].getOccupied() == false){temp.add(world[(n.y)][(n.x)-1]);}
+    try{if(world[(n.y/40)-1][(n.x/40)].getOccupied() == false){temp.add(world[(n.y/40)-1][(n.x/40)]);}}catch(Exception e){}
+    try{if(world[(n.y/40)][(n.x/40)+1].getOccupied() == false){temp.add(world[(n.y/40)][(n.x/40)+1]);}}catch(Exception e){}
+    try{if(world[(n.y/40)+1][(n.x/40)].getOccupied() == false){temp.add(world[(n.y/40)+1][(n.x/40)]);}}catch(Exception e){}
+    try{if(world[(n.y/40)][(n.x/40)-1].getOccupied() == false){temp.add(world[(n.y/40)][(n.x/40)-1]);}}catch(Exception e){}
     return temp;
   }
   
-<<<<<<< HEAD
   public void path(){
     for(Sector[] ss : world){
       for(Sector s : ss){
         s.setChecked(false); 
       }
-=======
-  /*public void path(){
-    for(Sector s : world){
-      s.setChecked(false); 
->>>>>>> 25b2311c3c78e9d1d552f5800d705a20599adab4
     }
     for(Sector s : getEmpties(world[13][6])){
       s.setDist(world[13][6].getDist()+1);
@@ -47,8 +43,7 @@ class Grid{
       //stack.push(s);
     }
     path(q.dequeue());
-    
-  }*/
+  }
   public void path(Sector x){
     for(Sector s : getEmpties(x)){
       s.setDist(x.getDist()+1);
@@ -59,18 +54,11 @@ class Grid{
     }
     path(q.dequeue());
   }
-<<<<<<< HEAD
   public void cpPrep(){
      for(int i = 0;i<a.size();i++){
        a.get(i).setcp();
-=======
-  /*public void cpPrep(){
-     a.get(0).set
-     for(int i = 1;i<a.size();i++){
-       
->>>>>>> 25b2311c3c78e9d1d552f5800d705a20599adab4
      }
-  }*/
+  }
 }
     
     

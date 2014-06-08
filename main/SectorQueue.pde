@@ -40,13 +40,15 @@ class SectorQueue{
   
   private Node root,start;
   public SectorQueue(){
-    root = null;
+    root = new Node();
     start = root;
   }
   
   public void enqueue(Sector s){
     Node temp = new Node(s);
-    if(root.getPrev() == null)root.setPrev(temp);
+    if(root.getPrev() == null){
+      root.setPrev(temp);
+    }
     temp.setNext(start);
     start.setPrev(temp);
     start = temp;

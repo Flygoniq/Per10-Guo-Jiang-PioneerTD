@@ -35,10 +35,11 @@ void backGround() {
   rect(100,575,60,60);
   image(RocketBase, 110,585);
   image(RocketGun, 110,583);
+  addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520);
 }
 
 void draw(){
-  System.out.println(tick);
+  //System.out.println(tick);
   backGround();
   if (drawgrid){
     drawGrid();
@@ -62,6 +63,7 @@ void draw(){
   }
   tester.act();
   tick++;
+  //update();
 }
 
 void mouseClicked(){
@@ -72,10 +74,10 @@ void mouseClicked(){
     drawgrid = false;
   }
   if (checkMouse(20,60,585,625)) {
-    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,5);
+    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,50);
   }
   if (checkMouse(111,150,585,625)) {
-    current = new Tower(RocketBase, RocketGun,RocketGun,10);
+    current = new Tower(RocketBase, RocketGun,RocketGun,100);
   }
   if (checkMouse("All Towers")){
     placeTower = true;

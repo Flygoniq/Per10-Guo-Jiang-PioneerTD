@@ -1,4 +1,4 @@
-PImage LightBuoyBase, LightBuoyGun, PTBoat,RocketBase,RocketGun,LightBuoyProjectile;
+PImage LightBuoyBase, LightBuoyGun, PTBoat,RocketBase,RocketGun,LightBuoyProjectile,BaseCannon,FalseTower;
 void loadImages(){
   LightBuoyBase = loadImage("Images/LightBuoyBase.png");
   LightBuoyGun = loadImage("Images/LightBuoyGun.png");
@@ -6,4 +6,6 @@ void loadImages(){
   RocketBase = loadImage("Images/RocketBase.png");
   RocketGun = loadImage("Images/RocketMissile.png");
   LightBuoyProjectile = loadImage("Images/LightBuoyProjectile.png");
+  BaseCannon = loadImage("Images/BaseCannon.png");
+  FalseTower = loadImage("Images/FalseTower.png");
 }

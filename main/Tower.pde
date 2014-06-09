@@ -60,4 +60,11 @@ class Tower{
   void setFiringspeed(float n) {
     firingspeed = n;
   }
+  float getAngle() {
+    return angle;
+  }
+  void setAngle(float f ) {
+    angle = f;
+  }
+  
 }

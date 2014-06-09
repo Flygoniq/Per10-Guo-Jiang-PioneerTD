@@ -11,16 +11,23 @@ class Sector{
    buildable = true;
    this.x = x;
    this.y = y;
-   dist = 999;
+   dist = 0;
    next = null;
    cp = null;
   }
   
   void setcp(){
-    if(x == 13*40 && y == 6*40){
+    if(x == 6*40 && y == 13*40){
       cp = new Checkpoint(x+20,y+40);
+      println("used special setcp");
     }
-    cp = new Checkpoint(((next.x+x)/2)+20,((next.y+y)/2)+20,next.cp);
+    try{
+      cp = new Checkpoint(((next.x+x)/2)+20,((next.y+y)/2)+20,next.cp);
+    }catch(Exception e){
+      return;
+    }
+    //println((((next.x+x)/2)+20)+","+(((next.y+y)/2)+20)+","+next.cp);
+    //println(cp);
   }
   void setOccupied(boolean boo){
     occupied = boo;

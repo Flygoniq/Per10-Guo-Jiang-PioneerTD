@@ -44,6 +44,7 @@ void backGround() {
   text("Resources",460,580);
   textSize(32);
   text(resources,460,630);
+  grid.show();
 }
 
 void draw(){
@@ -69,11 +70,11 @@ void draw(){
   }
   for(int i = 0;i<14;i++){
     for(int j = 0;j<14;j++){
-      rect(grid.world[i][j].cp.x,grid.world[i][j].cp.y,2,2);
+      try{rect(grid.world[i][j].cp.x,grid.world[i][j].cp.y,2,2);}catch(Exception e){}
     } 
   }
   //rect(tester.target.x,tester.target.y,40,40);
-  tester.act();
+  //tester.act();
   tick++;
   update();
   //println(pcount);

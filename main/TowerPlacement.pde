@@ -6,6 +6,7 @@ void DrawGuns() {
   image(base.getBuoy(),base.getXcor(),base.getYcor());
   base.setAngle(atan(-(mouseX -base.getXcor() - 20) / (mouseY-base.getYcor())));
   image(base.getBuoy(),base.getXcor(),base.getYcor());
+  pushMatrix();
   translate(base.getXcor(),base.getYcor());
   translate(20,8);
   rotate(base.getAngle());
@@ -20,6 +21,7 @@ void DrawGuns() {
       image(t.getBuoy(),t.getXcor(),t.getYcor());
       image(t.getGun(),t.getXcor(),t.getYcor());
   }
+  popMatrix();
 }
   
 void addTower(PImage b, PImage g,PImage p, float f, float x, float y) {

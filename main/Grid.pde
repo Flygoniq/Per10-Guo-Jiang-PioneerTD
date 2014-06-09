@@ -8,8 +8,8 @@ class Grid{
     pathcount = 0;
     for(int i = 0;i<14;i++){
       for(int j = 0;j<14;j++){
-        world[i][j] = new Sector(i*40,j*40);
-      } 
+        world[j][i] = new Sector(i*40,j*40);
+      }
     }
     world[13][6].setDist(0);
     world[13][6].setNext(new Sector(280,520));
@@ -37,6 +37,7 @@ class Grid{
       int x = s.x/40;
       int y = s.y/40;
       if(s.getChecked() == false){
+        println(x+","+y);
         s.setChecked(true);
         try{
           if(y>0 && world[y-1][x].getChecked() == false && world[y-1][x].getOccupied() == false){

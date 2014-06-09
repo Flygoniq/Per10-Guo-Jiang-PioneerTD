@@ -20,6 +20,7 @@ void setup(){
   backGround();
   tester = new PTBoat();
   addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520);
+  current = Towers.get(0);
 }
 void backGround() {
   loadImages();
@@ -51,13 +52,11 @@ void draw(){
   setX(mouseX-20);
   setY(mouseY-20);
   }
-  if (setTower){
-    DrawGuns();
-    if (current.fire){
+  DrawGuns();
+  if (current.fire){
       m = m+1;
       fire();
     }
-  }
   if (placeTower) {
     drawGrid();
     image(current.getBuoy(),ghostx,ghosty);

@@ -12,16 +12,12 @@ void DrawGuns() {
   rotate(base.getAngle());
   translate(-20,-8);
   image(base.getGun(), 0,0);
-  translate(20,8);
-  rotate(-1*base.getAngle());
-  translate(-20,-8);
-  translate(-1*base.getXcor(),-1*base.getYcor());
+  popMatrix();
   for(int i = 1; i < count; i++ ) {
       Tower t = Towers.get(i);
       image(t.getBuoy(),t.getXcor(),t.getYcor());
       image(t.getGun(),t.getXcor(),t.getYcor());
   }
-  popMatrix();
 }
   
 void addTower(PImage b, PImage g,PImage p, float f, float x, float y) {
@@ -45,7 +41,7 @@ void fire() {
   for (int i = 1; i < count; i++) {
     Tower t = Towers.get(i);
     if (tick % t.getFiringspeed() == 0){
-    addProjectile(t.getProjectile(),0,-10,t.getXcor(), t.getYcor() - 10);
+    addProjectile(t.getProjectile(),0,-10,t.getXcor(), t.getYcor() - 10,t.getAngle());
     }
   }
   Projectilefire();

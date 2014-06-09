@@ -5,15 +5,17 @@ class Projectile {
   float Yprogression = -10;
   float Xcord;
   float Ycord;
+  float Angle;
   
   
   public Projectile(){}
-  public Projectile(PImage p, float xp, float yp,float xc, float yc){
+  public Projectile(PImage p, float xp, float yp,float xc, float yc,float angle){
     projectile = p;
     Xprogression = xp;
     Yprogression = yp;
     Xcord = xc;
     Ycord = yc;
+    Angle = angle;
   }
   
   PImage getProjectile() {
@@ -46,5 +48,10 @@ class Projectile {
   float getYcord() {
     return Ycord;
   }
-    
+  float getAngle() {
+    return Angle;
+  }
+  void setAngle(float a) {
+    Angle = a;
+  }
 }

@@ -4,7 +4,7 @@ import java.util.*;
 
 boolean drawgrid = false;
 boolean placeTower = false;
-boolean setTower = false;
+boolean setTower = true;
 Grid grid;
 float resources = 400;
 PTBoat tester;
@@ -20,7 +20,10 @@ void setup(){
   grid.show();
   backGround();
   tester = new PTBoat();
-  addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520);
+  addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520,10);
+  current = Towers.get(0);
+  ships.add(tester);
+  bcount = 1;
 }
 void backGround() {
   loadImages();
@@ -51,18 +54,15 @@ void draw(){
     drawGrid();
   }
   else{backGround();}
-  println(mouseX + "," + mouseY);
+  //println(mouseX + "," + mouseY);
   if(placeTower){
   setX(mouseX-20);
   setY(mouseY-20);
   }
   if (setTower){
     DrawGuns();
-    if (current.fire){
-      m = m+1;
-      fire();
+    m = m+1;
     }
-  }
   if (placeTower) {
     drawGrid();
     image(current.getBuoy(),ghostx,ghosty);
@@ -75,6 +75,8 @@ void draw(){
   //rect(tester.target.x,tester.target.y,40,40);
   tester.act();
   tick++;
+  update();
+  //println(pcount);
 }
 
 void mouseClicked(){
@@ -85,10 +87,11 @@ void mouseClicked(){
     drawgrid = false;
   }
   if (checkMouse(20,60,585,625)) {
-    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,50,50);
+    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,50,50,15);
+    System.out.println("damage of current" + current.getDamage());
   }
   if (checkMouse(111,150,585,625)) {
-    current = new Tower(RocketBase, RocketGun,RocketGun,100,100);
+    current = new Tower(RocketBase, RocketGun,RocketGun,100,100,30);
   }
   if (checkMouse("All Towers")){
     placeTower = true;
@@ -97,7 +100,7 @@ void mouseClicked(){
     if (grid.world[(int)(ghostx+20)/40][(int)(ghosty+20)/40].occupied == true) {}
     else if (resources - current.getCost() < 0){}
     else {
-    addTower(current.getBuoy(), current.getGun(),current.getProjectile(),current.getFiringspeed(),(((int)((ghostx+20)/40))*40),(((int)((ghosty+20)/40))*40));
+    addTower(current.getBuoy(), current.getGun(),current.getProjectile(),current.getFiringspeed(),(((int)((ghostx+20)/40))*40),(((int)((ghosty+20)/40))*40),current.getDamage());
     grid.world[(int)(ghostx+20)/40][(int)(ghosty+20)/40].occupied = true;
     setTower = true;
     placeTower = false;

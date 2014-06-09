@@ -2,9 +2,24 @@ ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 int pcount = 0;
 int multiplier = 0;
 
-void addProjectile(PImage p, float xp, float yp,float xc, float yc,float a) {
+void addProjectile(PImage p, float xp, float yp,float xc, float yc,float a, float damage, Ship target) {
   pcount ++;
-  Projectile t = new Projectile(p,xp,yp,xc,yc,a);
+  Projectile t = new Projectile(p,xp,yp,xc,yc,a,damage,target);
+  projectiles.add(t);
+}
+void addProjectile(PImage p, float xp, float yp,float xc, float yc,float a, float damage) {
+  //println("part4");
+  pcount ++;
+  Projectile t = new Projectile(p,xp,yp,xc,yc,a,damage);
+  projectiles.add(t);
+}
+void addProjectile(PImage p, float xc, float yc, Ship target) {
+  pcount ++;
+  Projectile t = new Projectile();
+  t.setProjectile(p);
+  t.setXcord(xc);
+  t.setYcord(yc);
+  t.setDestination(target);
   projectiles.add(t);
 }
 
@@ -34,8 +49,11 @@ void Projectilefire() {
 }
 
 void Cannonfire() {
+  //println("reached this step");
   Tower t = Towers.get(0);
   if (m%30 > 10) {
-  addProjectile(t.getProjectile(),5*sin(t.getAngle()),-5*cos(t.getAngle()),t.getXcor(), t.getYcor() - 10,atan(-(mouseX -t.getXcor() - 20) / (mouseY-t.getYcor())));
+    //println("part 2");
+    //image(t.getProjectile(), t.getYcor(),t.getXcor());
+  addProjectile(t.getProjectile(),5*sin(t.getAngle()),-5*cos(t.getAngle()),t.getXcor(), t.getYcor() - 10,atan(-(mouseX -t.getXcor() - 20) / (mouseY-t.getYcor())),15);
   }
 }

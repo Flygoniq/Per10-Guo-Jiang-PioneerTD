@@ -16,11 +16,17 @@ void DrawGuns() {
   for(int i = 1; i < count; i++ ) {
       Tower t = Towers.get(i);
       image(t.getBuoy(),t.getXcor(),t.getYcor());
-      image(t.getGun(),t.getXcor(),t.getYcor());
+      pushMatrix();
+      translate(t.getXcor(),t.getYcor());
+      translate(20,20);
+      rotate(t.getAngle());
+      translate(-20,-20);
+      image(t.getGun(),0,0);
+      popMatrix();
   }
 }
   
-void addTower(PImage b, PImage g,PImage p, float f, float x, float y) {
+void addTower(PImage b, PImage g,PImage p, float f, float x, float y,float d) {
   count ++;
   Tower t = new Tower();
   t.setYcor(y);
@@ -29,6 +35,7 @@ void addTower(PImage b, PImage g,PImage p, float f, float x, float y) {
   t.setBuoy(b);
   t.setProjectile(p);
   t.setFiringspeed(f);
+  t.setDamage(d);
   Towers.add(t);
 }
 
@@ -41,13 +48,22 @@ void fire() {
   for (int i = 1; i < count; i++) {
     Tower t = Towers.get(i);
     if (tick % t.getFiringspeed() == 0){
-    addProjectile(t.getProjectile(),0,-10,t.getXcor(), t.getYcor() - 10,t.getAngle());
+    addProjectile(t.getProjectile(),0,-10,t.getXcor(), t.getYcor() - 10,t.getAngle(),t.getDamage());
     }
   }
   Projectilefire();
 }
 
 void update() {
-  Tower t = Towers.get(0);
-  t.setAngle(atan(abs(mouseX -t.getXcor() - 20) / abs(mouseY-t.getYcor())));
+  //println("part5");
+  for (int i = 1; i < count; i++) {
+    Tower t = Towers.get(i);
+    t.attack();
+    //println("finished");
+  }
+  for (int n = 0; n < pcount; n++) {
+    //print("part6");
+    Projectile p = projectiles.get(n);
+    p.attack();
+  }
 }

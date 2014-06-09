@@ -16,13 +16,18 @@ void removeProjectile(Projectile t) {
 void Projectilefire() {
   for (int i = 0; i < pcount; i++ ) {
     Projectile p = projectiles.get(i);
+    if(p.getYcord() < 0){
+      removeProjectile(p);
+    }
+    else{
     image(p.getProjectile(), p.getXcord(),p.getYcord());
     p.setXcord(p.getXcord() + p.getXprogression());
     p.setYcord(p.getYcord() + p.getYprogression());
+    }
   }
 }
 
 void Cannonfire() {
   Tower t = Towers.get(0);
-  addProjectile(t.getProjectile(),0,-10,t.getXcor(), t.getYcor() - 10);
+  addProjectile(t.getProjectile(),5*sin(t.getAngle()),-5*cos(t.getAngle()),t.getXcor(), t.getYcor() - 10);
 }

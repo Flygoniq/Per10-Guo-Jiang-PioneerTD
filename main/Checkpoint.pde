@@ -13,4 +13,8 @@ class Checkpoint{
     this.y = y;
     next = n;
   }
+  
+  String toString(){
+    return "("+x+","+y+")";
+  }
 }

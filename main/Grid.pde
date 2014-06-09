@@ -2,14 +2,12 @@
 class Grid{
   Sector[][]world;
   Queue<Sector> fringe;
-  //Stack stack;
   int pathcount;
   
   public Grid(){
     world = new Sector[14][14];
     fringe = new LinkedList<Sector>();
     pathcount = 0;
-    //stack = new Stack();    
     for(int i = 0;i<14;i++){
       for(int j = 0;j<14;j++){
         world[i][j] = new Sector(i*40,j*40);
@@ -90,6 +88,14 @@ class Grid{
     for(int i = 0;i<14;i++){
       for(int j = 0;j<14;j++){
         world[i][j].setcp();
+      } 
+    }
+  }
+  void show(){
+    for(int i = 0;i<14;i++){
+      for(int j = 0;j<14;j++){
+        println(world[i][j].next);
+        //rect(grid.world[i][j].cp.x,grid.world[i][j].cp.y,2,2);
       } 
     }
   }

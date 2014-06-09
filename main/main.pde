@@ -22,6 +22,8 @@ void setup(){
   tester = new PTBoat();
   addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520);
   current = Towers.get(0);
+  ships.add(tester);
+  bcount = 1;
 }
 void backGround() {
   loadImages();
@@ -52,18 +54,15 @@ void draw(){
     drawGrid();
   }
   else{backGround();}
-  println(mouseX + "," + mouseY);
+  //println(mouseX + "," + mouseY);
   if(placeTower){
   setX(mouseX-20);
   setY(mouseY-20);
   }
   if (setTower){
     DrawGuns();
-    if (current.fire){
-      m = m+1;
-      fire();
+    m = m+1;
     }
-  }
   if (placeTower) {
     drawGrid();
     image(current.getBuoy(),ghostx,ghosty);
@@ -76,6 +75,8 @@ void draw(){
   //rect(tester.target.x,tester.target.y,40,40);
   tester.act();
   tick++;
+  update();
+  //println(pcount);
 }
 
 void mouseClicked(){

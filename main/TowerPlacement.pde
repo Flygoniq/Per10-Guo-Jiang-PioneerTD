@@ -16,7 +16,13 @@ void DrawGuns() {
   for(int i = 1; i < count; i++ ) {
       Tower t = Towers.get(i);
       image(t.getBuoy(),t.getXcor(),t.getYcor());
-      image(t.getGun(),t.getXcor(),t.getYcor());
+      pushMatrix();
+      translate(t.getXcor(),t.getYcor());
+      translate(20,20);
+      rotate(t.getAngle());
+      translate(-20,-20);
+      image(t.getGun(),0,0);
+      popMatrix();
   }
 }
   
@@ -48,6 +54,15 @@ void fire() {
 }
 
 void update() {
-  Tower t = Towers.get(0);
-  t.setAngle(atan(abs(mouseX -t.getXcor() - 20) / abs(mouseY-t.getYcor())));
+  //println("part5");
+  for (int i = 1; i < count; i++) {
+    Tower t = Towers.get(i);
+    t.attack();
+    println("finished");
+  }
+  for (int n = 0; n < pcount; n++) {
+    //print("part6");
+    Projectile p = projectiles.get(n);
+    p.attack();
+  }
 }

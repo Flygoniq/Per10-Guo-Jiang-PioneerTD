@@ -9,7 +9,7 @@ class Tower{
   float firingspeed;
   float cost;
   Ship target;
-  float radius;
+  float radius = 50;
   
   public Tower() {
   }
@@ -78,7 +78,8 @@ class Tower{
   }
   void fire(Ship s) {
     if (tick% firingspeed == 0) {
-      addProjectile(projectile,0,0,Xcor,Ycor,find(s));
+      System.out.println("reached this step");
+      addProjectile(projectile,0,0,Xcor,Ycor,find(s), s);
     }
   }
       
@@ -93,16 +94,19 @@ class Tower{
     angle = result;
     return result;
   }
-      
+
       
   boolean attack() {
-    for (int i = 0; i < bcount; i++ ) {
-      Ship s = ships.get(i);
-      if (dist(Xcor,Ycor,s.getX(),s.getY()) <= radius) {
-        fire(s);
-        return true;
+      for (int i = 0; i < bcount; i++) {
+         Ship s = ships.get(i);
+         //print(radius);
+         println(dist(Xcor,Ycor,s.getX(),s.getY()));
+          if(dist(Xcor,Ycor,s.getX(),s.getY())<radius) {
+            //println("reached this step");
+            fire(s);
+            return true;
+          }
       }
-    }
-    return false;
-  }
+      return false;
+      }    
 }

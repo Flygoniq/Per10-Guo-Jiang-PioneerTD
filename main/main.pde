@@ -12,18 +12,19 @@ Tower current;
 boolean fire = true;
 float tick= 0;
 float m;
+int wallhp;
 //Checkpoint lastcp;
 
 
 void setup(){
   grid = new Grid();
-  grid.show();
   backGround();
   tester = new PTBoat();
   addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520,10);
   current = Towers.get(0);
   ships.add(tester);
   bcount = 1;
+  wallhp = 30;
 }
 void backGround() {
   loadImages();
@@ -44,7 +45,6 @@ void backGround() {
   text("Resources",460,580);
   textSize(32);
   text(resources,460,630);
-  grid.show();
 }
 
 void draw(){
@@ -74,7 +74,9 @@ void draw(){
     } 
   }
   //rect(tester.target.x,tester.target.y,40,40);
-  //tester.act();
+  for(int i = 0;i<ships.size();i++){
+    ships.get(i).act();
+  }
   tick++;
   update();
   //println(pcount);

@@ -1,4 +1,4 @@
-
+Sector end = new Sector(240,560);
 class Grid{
   Sector[][]world;
   int pathcount;
@@ -12,7 +12,7 @@ class Grid{
       }
     }
     world[13][6].setDist(0);
-    world[13][6].setNext(new Sector(280,520));
+    world[13][6].setNext(end);
     path();
     cpprep();
   }

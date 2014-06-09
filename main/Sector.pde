@@ -19,7 +19,6 @@ class Sector{
   void setcp(){
     if(x == 6*40 && y == 13*40){
       cp = new Checkpoint(x+20,y+40);
-      println("used special setcp");
     }
     try{
       cp = new Checkpoint(((next.x+x)/2)+20,((next.y+y)/2)+20,next.cp);

@@ -19,7 +19,6 @@ class Ship{
     x += speed*(float)2/6*cos(direction);
     y += speed*(float)2/6*sin(direction);
     if(sqrt(sq(x-target.cp.x)+sq(y-target.cp.y))<1)target=target.next;
-    rect(target.cp.x,target.cp.y,2,2);
   }
 
   void turn(){
@@ -38,6 +37,12 @@ class Ship{
   void act(){
     turn();
     move();
+    println(target.y);
+    if(target.y==560){
+      wallhp -= attack;
+      ships.remove(this);
+      bcount --;
+    }
     pushMatrix();
     translate(x,y);
     //println(x+" "+y);

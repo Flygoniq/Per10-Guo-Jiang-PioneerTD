@@ -45,7 +45,7 @@ class Grid{
         fringe.add(world[y-1][x]);
         pather();
       }
-    }catch(Exception e){}
+    }catch(Exception e){return;}
     try{
       //Sector world[y][x+1] = world[y][x+1];
       if(world[y][x+1].getChecked() == false && world[y][x+1].getOccupied() == false && world[y][x+1].getDist()>s.getDist()){
@@ -55,7 +55,7 @@ class Grid{
         fringe.add(world[y][x+1]);
         pather();
       }
-    }catch(Exception e){}
+    }catch(Exception e){return;}
     try{
       //Sector world[y+1][x] = world[y+1][x];
       if(world[y+1][x].getChecked() == false && world[y+1][x].getOccupied() == false && world[y+1][x].getDist()>s.getDist()){
@@ -65,7 +65,7 @@ class Grid{
         fringe.add(world[y+1][x]);
         pather();
       }
-    }catch(Exception e){}
+    }catch(Exception e){return;}
     try{
       //Sector world[y][x-1] = world[y][x-1];
       if(world[y][x-1].getChecked() == false && world[y][x-1].getOccupied() == false && world[y][x-1].getDist()>s.getDist()){
@@ -75,7 +75,7 @@ class Grid{
         fringe.add(world[y][x-1]);
         pather();
       }
-    }catch(Exception e){}
+    }catch(Exception e){return;}
   }
 
   
@@ -95,7 +95,7 @@ class Grid{
     for(int i = 0;i<14;i++){
       for(int j = 0;j<14;j++){
         println(world[i][j].next);
-        //rect(grid.world[i][j].cp.x,grid.world[i][j].cp.y,2,2);
+        rect(grid.world[i][j].cp.x,grid.world[i][j].cp.y,2,2);
       } 
     }
   }

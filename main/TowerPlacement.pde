@@ -4,7 +4,12 @@ int count = 0;
 void DrawGuns() {
   Tower base = Towers.get(0);
   image(base.getBuoy(),base.getXcor(),base.getYcor());
-  base.setAngle(atan(-(mouseX -base.getXcor() - 20) / (mouseY-base.getYcor())));
+  if(mouseY < base.getYcor()){
+  base.setAngle(atan(-1*(mouseX -base.getXcor() - 20) / (mouseY-base.getYcor())));
+  }
+  else {
+    base.setAngle((-1*atan((base.getXcor()-mouseX)/(base.getYcor() - mouseY - 20))) + PI);
+  }
   image(base.getBuoy(),base.getXcor(),base.getYcor());
   pushMatrix();
   translate(base.getXcor(),base.getYcor());

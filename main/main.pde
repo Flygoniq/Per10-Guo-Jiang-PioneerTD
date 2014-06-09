@@ -48,7 +48,7 @@ void backGround() {
 }
 
 void draw(){
-  //println(count);
+  println(bcount);
   //System.out.println(tick);
   backGround();
   if (drawgrid){
@@ -74,7 +74,7 @@ void draw(){
     } 
   }
   //rect(tester.target.x,tester.target.y,40,40);
-  for(int i = 0;i<ships.size();i++){
+  for(int i = 0;i<bcount;i++){
     ships.get(i).act();
   }
   tick++;
@@ -90,11 +90,11 @@ void mouseClicked(){
     drawgrid = false;
   }
   if (checkMouse(20,60,585,625)) {
-    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,50,50,15);
+    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,10,50,50);
     System.out.println("damage of current" + current.getDamage());
   }
   if (checkMouse(111,150,585,625)) {
-    current = new Tower(RocketBase, RocketGun,RocketGun,100,100,30);
+    current = new Tower(RocketBase, RocketGun,RocketGun,100,100,50);
   }
   if (checkMouse("All Towers")){
     placeTower = true;

@@ -9,7 +9,7 @@ class Tower{
   float firingspeed;
   float cost;
   Ship target;
-  float radius = 50;
+  float radius = 100;
   float damage;
   
   public Tower() {

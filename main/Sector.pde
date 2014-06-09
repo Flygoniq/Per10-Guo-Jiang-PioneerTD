@@ -56,5 +56,9 @@ class Sector{
   Checkpoint getcp(){
     return cp;
   }
+  
+  String toString(){
+    return "("+x+","+y+")";
+  }
 }
   

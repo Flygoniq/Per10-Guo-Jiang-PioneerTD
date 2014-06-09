@@ -3,13 +3,11 @@ class Grid{
   Sector[][]world;
   Queue<Sector> fringe;
   //Stack stack;
-  ArrayList<Sector> a;
   int pathcount;
   
   public Grid(){
     world = new Sector[14][14];
     fringe = new LinkedList<Sector>();
-    a = new ArrayList<Sector>();
     pathcount = 0;
     //stack = new Stack();    
     for(int i = 0;i<14;i++){
@@ -20,64 +18,79 @@ class Grid{
     world[13][6].setDist(0);
     world[13][6].setNext(new Sector(280,520));
     path();
+    cpprep();
   }
   
   
-
+  
   void path(){
-    fringe.add(world[13][6]);
-    a.add(world[13][6]);
-    pather();
-  }
-  void pather(){
-    Queue<Sector> temp = new LinkedList<Sector>();
-    for(Sector s : fringe){
-      int x = s.x/40;
-      int y = s.y/40;
-      try{
-        if(world[y-1][x].getOccupied() == false && world[y-1][x].getDist()>s.getDist()){
-          world[y-1][x].setDist(s.getDist()+1);
-          world[y-1][x].setNext(s);
-          temp.add(world[y-1][x]);
-          a.add(world[y-1][x]);
-        }
-      }catch(Exception e){}
-      try{
-        if(world[y][x+1].getOccupied() == false && world[y][x+1].getDist()>s.getDist()){
-          world[y][x+1].setDist(s.getDist()+1);
-          world[y][x+1].setNext(s);
-          temp.add(world[y][x+1]);
-          a.add(world[y][x+1]);
-        }
-      }catch(Exception e){}
-      try{
-        if(world[y+1][x].getOccupied() == false && world[y+1][x].getDist()>s.getDist()){
-          world[y+1][x].setDist(s.getDist()+1);
-          world[y+1][x].setNext(s);
-          temp.add(world[y+1][x]);
-          a.add(world[y+1][x]);
-        }
-      }catch(Exception e){}
-      try{
-        if(world[y][x-1].getOccupied() == false && world[y][x-1].getDist()>s.getDist()){
-          world[y][x-1].setDist(s.getDist()+1);
-          world[y][x-1].setNext(s);
-          temp.add(world[y][x-1]);
-          a.add(world[y][x-1]);
-        }
-      }catch(Exception e){}
-    }
-    for(Sector s : temp){
-      fringe.add(s);
-    }
-  }
-      
-  void show(){
     for(int i = 0;i<14;i++){
       for(int j = 0;j<14;j++){
-        print(world[i][j].getChecked() + "\t");
+        world[i][j].setChecked(false);
       } 
-      println();
+    }
+    fringe.add(world[13][6]);
+    world[13][6].setChecked(true);
+    pather();
+  }
+  
+  void pather(){
+    Sector s = fringe.remove();
+    int x = s.x/40;
+    int y = s.y/40;
+    try{
+      //Sector world[y-1][x] = world[y-1][x];
+      if(world[y-1][x].getChecked() == false && world[y-1][x].getOccupied() == false && world[y-1][x].getDist()>s.getDist()){
+        world[y-1][x].setDist(s.getDist()+1);
+        world[y-1][x].setNext(s);
+        world[y-1][x].setChecked(true);
+        fringe.add(world[y-1][x]);
+        pather();
+      }
+    }catch(Exception e){}
+    try{
+      //Sector world[y][x+1] = world[y][x+1];
+      if(world[y][x+1].getChecked() == false && world[y][x+1].getOccupied() == false && world[y][x+1].getDist()>s.getDist()){
+        world[y][x+1].setDist(s.getDist()+1);
+        world[y][x+1].setNext(s);
+        world[y][x+1].setChecked(true);
+        fringe.add(world[y][x+1]);
+        pather();
+      }
+    }catch(Exception e){}
+    try{
+      //Sector world[y+1][x] = world[y+1][x];
+      if(world[y+1][x].getChecked() == false && world[y+1][x].getOccupied() == false && world[y+1][x].getDist()>s.getDist()){
+        world[y+1][x].setDist(s.getDist()+1);
+        world[y+1][x].setNext(s);
+        world[y+1][x].setChecked(true);
+        fringe.add(world[y+1][x]);
+        pather();
+      }
+    }catch(Exception e){}
+    try{
+      //Sector world[y][x-1] = world[y][x-1];
+      if(world[y][x-1].getChecked() == false && world[y][x-1].getOccupied() == false && world[y][x-1].getDist()>s.getDist()){
+        world[y][x-1].setDist(s.getDist()+1);
+        world[y][x-1].setNext(s);
+        world[y][x-1].setChecked(true);
+        fringe.add(world[y][x-1]);
+        pather();
+      }
+    }catch(Exception e){}
+  }
+
+  
+  
+  
+  
+  
+  
+  void cpprep(){
+    for(int i = 0;i<14;i++){
+      for(int j = 0;j<14;j++){
+        world[i][j].setcp();
+      } 
     }
   }
   

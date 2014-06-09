@@ -16,8 +16,12 @@ class Ship{
   }
   
   void move(){
-    x += speed*(2/6)*acos(direction);
-    y += speed*(2/6)*asin(direction);
+    //println(x+" "+y);
+    //println("Direction: "+direction);
+    //println(speed+" "+(float)2/6+" "+sin(direction));
+    x += speed*(float)2/6*cos(direction);
+    y += speed*(float)2/6*sin(direction);
+    //println(x+" "+y);
     //if(sqrt(sq(x-target.x)+sq(y-target.y))<1)target=target.next;
   }
 
@@ -26,7 +30,7 @@ class Ship{
     float angle = (atan2(50-x,50-y)-direction);
     if(angle>90)direction -= -180;
     if(angle<-90)direction += 180;
-    float max = (90*(speed*(2/6)))/(10*PI);
+    float max = (90*(speed*(float)(2/6)))/(10*PI);
     if(angle>max)angle = max;
     if(angle<-1*max)angle = -1*max;
     direction+=angle;
@@ -34,5 +38,11 @@ class Ship{
   void act(){
     turn();
     move();
+    pushMatrix();
+    translate(x,y);
+    println(x+" "+y);
+    rotate(direction);
+    image(avatar,0,0);
+    popMatrix();
   }
 }

@@ -94,7 +94,7 @@ class Grid{
   void show(){
     for(int i = 0;i<14;i++){
       for(int j = 0;j<14;j++){
-        println(world[i][j].next);
+        //println(world[i][j].next);
         rect(grid.world[i][j].cp.x,grid.world[i][j].cp.y,2,2);
       } 
     }

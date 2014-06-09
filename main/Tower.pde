@@ -10,16 +10,18 @@ class Tower{
   float cost;
   Ship target;
   float radius = 50;
+  float damage;
   
   public Tower() {
   }
   
-  public Tower(PImage b, PImage g,PImage p,float n, float c) {
+  public Tower(PImage b, PImage g,PImage p,float n, float c,float d) {
     gun = g;
     buoy = b;
     projectile=p;
     firingspeed = n;
     cost = c;
+    damage = d;
   }
   
   void setXcor(float a) {
@@ -76,10 +78,17 @@ class Tower{
   float getCost() {
     return cost;
   }
+  float getDamage() {
+    return damage;
+  }
+  void setDamage(float f) {
+    damage = f;
+  }
+  
   void fire(Ship s) {
     if (tick% firingspeed == 0) {
       System.out.println("reached this step");
-      addProjectile(projectile,0,0,Xcor,Ycor,find(s), s);
+      addProjectile(projectile,0,0,Xcor,Ycor,find(s), damage, s);
     }
   }
       
@@ -100,7 +109,7 @@ class Tower{
       for (int i = 0; i < bcount; i++) {
          Ship s = ships.get(i);
          //print(radius);
-         println(dist(Xcor,Ycor,s.getX(),s.getY()));
+         //println(dist(Xcor,Ycor,s.getX(),s.getY()));
           if(dist(Xcor,Ycor,s.getX(),s.getY())<radius) {
             //println("reached this step");
             fire(s);

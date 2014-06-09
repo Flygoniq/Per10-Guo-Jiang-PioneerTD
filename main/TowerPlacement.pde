@@ -26,7 +26,7 @@ void DrawGuns() {
   }
 }
   
-void addTower(PImage b, PImage g,PImage p, float f, float x, float y) {
+void addTower(PImage b, PImage g,PImage p, float f, float x, float y,float d) {
   count ++;
   Tower t = new Tower();
   t.setYcor(y);
@@ -35,6 +35,7 @@ void addTower(PImage b, PImage g,PImage p, float f, float x, float y) {
   t.setBuoy(b);
   t.setProjectile(p);
   t.setFiringspeed(f);
+  t.setDamage(d);
   Towers.add(t);
 }
 
@@ -47,7 +48,7 @@ void fire() {
   for (int i = 1; i < count; i++) {
     Tower t = Towers.get(i);
     if (tick % t.getFiringspeed() == 0){
-    addProjectile(t.getProjectile(),0,-10,t.getXcor(), t.getYcor() - 10,t.getAngle());
+    addProjectile(t.getProjectile(),0,-10,t.getXcor(), t.getYcor() - 10,t.getAngle(),t.getDamage());
     }
   }
   Projectilefire();
@@ -58,7 +59,7 @@ void update() {
   for (int i = 1; i < count; i++) {
     Tower t = Towers.get(i);
     t.attack();
-    println("finished");
+    //println("finished");
   }
   for (int n = 0; n < pcount; n++) {
     //print("part6");

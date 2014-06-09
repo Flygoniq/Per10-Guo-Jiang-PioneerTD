@@ -6,19 +6,21 @@ class Projectile {
   float Xcord;
   float Ycord;
   float Angle;
+  float damage;
   
   
   public Projectile(){}
-  public Projectile(PImage p, float xp, float yp,float xc, float yc,float angle, Ship target){
+  public Projectile(PImage p, float xp, float yp,float xc, float yc,float angle,float d, Ship target){
     projectile = p;
     Xprogression = xp;
     Yprogression = yp;
     Xcord = xc;
     Ycord = yc;
     Angle = angle;
+    damage = d;
     destination = target;
   }
-  public Projectile(PImage p, float xp, float yp,float xc, float yc,float angle){
+  public Projectile(PImage p, float xp, float yp,float xc, float yc,float angle,float damage){
     projectile = p;
     Xprogression = xp;
     Yprogression = yp;
@@ -85,6 +87,12 @@ class Projectile {
     
       setXprogression(sin(Angle));
       setYprogression(-1*cos(Angle));
+       if (dist(Xcord,Ycord,destination.getX(),destination.getY()) < 50) {
+         System.out.println("damage" +damage);
+      destination.takeDamage(damage);
+      projectiles.remove(this);
+      pcount --;
+       }
     }
       pushMatrix();
       translate(Xcord,Ycord);
@@ -94,4 +102,4 @@ class Projectile {
       image(projectile,0,0);
       popMatrix();
     }
-  }
+}

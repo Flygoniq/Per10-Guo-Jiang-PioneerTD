@@ -20,7 +20,7 @@ void setup(){
   grid.show();
   backGround();
   tester = new PTBoat();
-  addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520);
+  addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520,10);
   current = Towers.get(0);
   ships.add(tester);
   bcount = 1;
@@ -87,10 +87,11 @@ void mouseClicked(){
     drawgrid = false;
   }
   if (checkMouse(20,60,585,625)) {
-    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,50,50);
+    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,50,50,15);
+    System.out.println("damage of current" + current.getDamage());
   }
   if (checkMouse(111,150,585,625)) {
-    current = new Tower(RocketBase, RocketGun,RocketGun,100,100);
+    current = new Tower(RocketBase, RocketGun,RocketGun,100,100,30);
   }
   if (checkMouse("All Towers")){
     placeTower = true;
@@ -99,7 +100,7 @@ void mouseClicked(){
     if (grid.world[(int)(ghostx+20)/40][(int)(ghosty+20)/40].occupied == true) {}
     else if (resources - current.getCost() < 0){}
     else {
-    addTower(current.getBuoy(), current.getGun(),current.getProjectile(),current.getFiringspeed(),(((int)((ghostx+20)/40))*40),(((int)((ghosty+20)/40))*40));
+    addTower(current.getBuoy(), current.getGun(),current.getProjectile(),current.getFiringspeed(),(((int)((ghostx+20)/40))*40),(((int)((ghosty+20)/40))*40),current.getDamage());
     grid.world[(int)(ghostx+20)/40][(int)(ghosty+20)/40].occupied = true;
     setTower = true;
     placeTower = false;

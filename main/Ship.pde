@@ -1,9 +1,9 @@
 class Ship{
-  int health, attack;
+  float health, attack;
   float basespeed, speed, x, y, direction;
   Sector target;
   PImage avatar;
-  
+  public Ship(){}
   public Ship(int hp, int atk, float spd){
     health = hp;
     attack = atk;
@@ -26,8 +26,8 @@ class Ship{
     float angle = (atan2(target.cp.y-y,target.cp.x-x)-direction);
     //float angle = (atan2(50-x,50-y)-direction);
     //println("First angle calculation: " + angle);
-    if(angle>90)direction -= -180;
-    if(angle<-90)direction += 180;
+    if(angle>90)direction += -180;
+    else if(angle<-90)direction += 180;
     float max = (90*(speed*(float)2/6))/(10*PI);
     //println("Max is: "+max);
     if(angle>max)angle = max;
@@ -56,5 +56,25 @@ class Ship{
   }
   void setY(float n) {
     y = n;
+  }
+  void setHealth(float n) {
+    health = n;
+  }
+  float getHealth() {
+    return health;
+  }
+  void setDamage(float n) {
+    attack = n;
+  }
+  float getDamage() {
+    return attack;
+  }
+  void takeDamage(float n) {
+    System.out.println(health);
+    health = health - n;
+    if (health <=0) {
+      ships.remove(this);
+      bcount --;
+    }
   }
 }

@@ -40,7 +40,7 @@ void removeTower(Tower t) {
 }
 
 void fire() {
-  for (int i = 0; i < count; i++) {
+  for (int i = 1; i < count; i++) {
     Tower t = Towers.get(i);
     if (tick % t.getFiringspeed() == 0){
     addProjectile(t.getProjectile(),0,-10,t.getXcor(), t.getYcor() - 10);

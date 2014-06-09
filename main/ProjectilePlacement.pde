@@ -21,3 +21,8 @@ void Projectilefire() {
     p.setYcord(p.getYcord() + p.getYprogression());
   }
 }
+
+void Cannonfire() {
+  Tower t = Towers.get(0);
+  addProjectile(t.getProjectile(),0,-10,t.getXcor(), t.getYcor() - 10);
+}

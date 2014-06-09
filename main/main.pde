@@ -19,6 +19,7 @@ void setup(){
   grid = new Grid();
   backGround();
   tester = new PTBoat();
+  addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520);
 }
 void backGround() {
   loadImages();
@@ -35,10 +36,10 @@ void backGround() {
   rect(100,575,60,60);
   image(RocketBase, 110,585);
   image(RocketGun, 110,583);
-  addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520);
 }
 
 void draw(){
+  System.out.println(count);
   //System.out.println(tick);
   backGround();
   if (drawgrid){
@@ -63,7 +64,6 @@ void draw(){
   }
   tester.act();
   tick++;
-  //update();
 }
 
 void mouseClicked(){
@@ -88,6 +88,7 @@ void mouseClicked(){
     setTower = true;
     placeTower = false;
   }
+  Cannonfire();
 }
 
 void drawGrid() {

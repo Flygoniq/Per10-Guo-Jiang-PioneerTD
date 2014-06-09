@@ -42,6 +42,9 @@ class Tower{
   void setProjectile(PImage p) {
     projectile=p;
   }
+  float distanceToShip(ship s){
+    return sqrt(sq(Xcor+20-s.x)+sq(Ycor-y+20.x))
+  }
   
   
   float getYcor() {

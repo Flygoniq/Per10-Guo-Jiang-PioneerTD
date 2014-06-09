@@ -1,6 +1,6 @@
 class Ship{
   float health, attack;
-  float basespeed, speed, x, y, direction;
+  float basespeed, speed, x, y, direction,traveled;
   Sector target;
   PImage avatar;
   public Ship(){}
@@ -12,12 +12,14 @@ class Ship{
     x = 20;
     y = 0;
     direction = PI/2;
+    traveled = 0;
     target = grid.world[0][0];
   }
   
   void move(){
     x += speed*(float)2/6*cos(direction);
     y += speed*(float)2/6*sin(direction);
+    traveled += sqrt(sq(speed*(float)2/6*cos(direction))+sq(speed*(float)2/6*sin(direction)));
     if(sqrt(sq(x-target.cp.x)+sq(y-target.cp.y))<1)target=target.next;
   }
 

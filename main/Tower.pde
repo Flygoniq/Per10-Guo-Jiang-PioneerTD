@@ -8,6 +8,8 @@ class Tower{
   float angle = 0;
   float firingspeed;
   float cost;
+  Ship target;
+  float radius;
   
   public Tower() {
   }
@@ -73,5 +75,34 @@ class Tower{
   }
   float getCost() {
     return cost;
+  }
+  void fire(Ship s) {
+    if (tick% firingspeed == 0) {
+      addProjectile(projectile,0,0,Xcor,Ycor,find(s));
+    }
+  }
+      
+  float find(Ship s) {
+    float result;
+    if(s.getY() < (Ycor+20)) {
+      result = atan((s.getX() - Xcor - 20)/(Ycor+20 - s.getY()));
+    }
+    else {
+      result = (-1*atan((s.getX()-Xcor - 20)/(s.getY() - Ycor - 20))) + PI;
+    }
+    angle = result;
+    return result;
+  }
+      
+      
+  boolean attack() {
+    for (int i = 0; i < bcount; i++ ) {
+      Ship s = ships.get(i);
+      if (dist(Xcor,Ycor,s.getX(),s.getY()) <= radius) {
+        fire(s);
+        return true;
+      }
+    }
+    return false;
   }
 }

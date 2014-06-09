@@ -45,4 +45,16 @@ class Ship{
     image(avatar,0,0);
     popMatrix();
   }
+  float getX() {
+    return x;
+  }
+  float getY() {
+    return y;
+  }
+  void setX(float n) {
+    x = n;
+  }
+  void setY(float n) {
+    y = n;
+  }
 }

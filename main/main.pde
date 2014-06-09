@@ -17,7 +17,7 @@ float m;
 
 void setup(){
   grid = new Grid();
-  //grid.show();
+  grid.show();
   backGround();
   tester = new PTBoat();
   addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520);
@@ -67,11 +67,11 @@ void draw(){
     drawGrid();
     image(current.getBuoy(),ghostx,ghosty);
   }
-  /*for(int i = 0;i<14;i++){
+  for(int i = 0;i<14;i++){
     for(int j = 0;j<14;j++){
       rect(grid.world[i][j].cp.x,grid.world[i][j].cp.y,2,2);
     } 
-  }*/
+  }
   //rect(tester.target.x,tester.target.y,40,40);
   tester.act();
   tick++;

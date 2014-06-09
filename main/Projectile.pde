@@ -87,7 +87,7 @@ class Projectile {
     
       setXprogression(sin(Angle));
       setYprogression(-1*cos(Angle));
-       if (dist(Xcord,Ycord,destination.getX(),destination.getY()) < 50) {
+       if (dist(Xcord,Ycord,destination.getX(),destination.getY()) < 5) {
          System.out.println("damage" +damage);
       destination.takeDamage(damage);
       projectiles.remove(this);

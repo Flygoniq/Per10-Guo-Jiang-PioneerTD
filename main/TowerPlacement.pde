@@ -15,7 +15,7 @@ void DrawGuns() {
   rotate(-1*base.getAngle());
   translate(-20,-8);
   translate(-1*base.getXcor(),-1*base.getYcor());
-  for(int i = 0; i < count; i++ ) {
+  for(int i = 1; i < count; i++ ) {
       Tower t = Towers.get(i);
       image(t.getBuoy(),t.getXcor(),t.getYcor());
       image(t.getGun(),t.getXcor(),t.getYcor());

@@ -19,7 +19,7 @@ class Grid{
   
   
   
-  void path(){
+  boolean path(){
     Queue<Sector> fringe= new LinkedList<Sector>();
     for(int i = 0;i<14;i++){
       for(int j = 0;j<14;j++){
@@ -73,6 +73,7 @@ class Grid{
         }catch(Exception e){}
       }
     }
+    return world[0][0].getChecked();
   }
     
     

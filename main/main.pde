@@ -6,7 +6,7 @@ boolean drawgrid = false;
 boolean placeTower = false;
 boolean setTower = false;
 Grid grid;
-int resources;
+float resources = 400;
 PTBoat tester;
 Tower current;
 boolean fire = true;
@@ -37,6 +37,10 @@ void backGround() {
   rect(100,575,60,60);
   image(RocketBase, 110,585);
   image(RocketGun, 110,583);
+  textSize(20);
+  text("Resources",460,580);
+  textSize(32);
+  text(resources,460,630);
 }
 
 void draw(){
@@ -47,7 +51,7 @@ void draw(){
     drawGrid();
   }
   else{backGround();}
-  //println(mouseX + "," + mouseY);
+  println(mouseX + "," + mouseY);
   if(placeTower){
   setX(mouseX-20);
   setY(mouseY-20);
@@ -73,19 +77,24 @@ void mouseClicked(){
     drawgrid = false;
   }
   if (checkMouse(20,60,585,625)) {
-    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,50);
+    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,50,50);
   }
   if (checkMouse(111,150,585,625)) {
-    current = new Tower(RocketBase, RocketGun,RocketGun,100);
+    current = new Tower(RocketBase, RocketGun,RocketGun,100,100);
   }
   if (checkMouse("All Towers")){
     placeTower = true;
   }
   else if (placeTower) {
+    if (grid.world[(int)(ghostx+20)/40][(int)(ghosty+20)/40].occupied == true) {}
+    else if (resources - current.getCost() < 0){}
+    else {
     addTower(current.getBuoy(), current.getGun(),current.getProjectile(),current.getFiringspeed(),(((int)((ghostx+20)/40))*40),(((int)((ghosty+20)/40))*40));
     grid.world[(int)(ghostx+20)/40][(int)(ghosty+20)/40].occupied = true;
     setTower = true;
     placeTower = false;
+    resources = resources - current.getCost();
+    }
   }
   Cannonfire();
 }

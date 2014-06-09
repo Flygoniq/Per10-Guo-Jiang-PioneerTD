@@ -7,15 +7,17 @@ class Tower{
   PImage projectile;
   float angle = 0;
   float firingspeed;
+  float cost;
   
   public Tower() {
   }
   
-  public Tower(PImage b, PImage g,PImage p,float n) {
+  public Tower(PImage b, PImage g,PImage p,float n, float c) {
     gun = g;
     buoy = b;
     projectile=p;
     firingspeed = n;
+    cost = c;
   }
   
   void setXcor(float a) {
@@ -66,5 +68,10 @@ class Tower{
   void setAngle(float f ) {
     angle = f;
   }
-  
+  void setCost(float f) {
+    cost = f;
+  }
+  float getCost() {
+    return cost;
+  }
 }

@@ -2,11 +2,13 @@
 class Grid{
   Sector[][]world;
   Queue<Sector> fringe;
+  Queue<Sector> extra;
   int pathcount;
   
   public Grid(){
     world = new Sector[14][14];
     fringe = new LinkedList<Sector>();
+    extra = new LinkedList<Sector>();
     pathcount = 0;
     for(int i = 0;i<14;i++){
       for(int j = 0;j<14;j++){
@@ -36,6 +38,7 @@ class Grid{
     Sector s = fringe.remove();
     int x = s.x/40;
     int y = s.y/40;
+    //s.setChecked(true);
     try{
       //Sector world[y-1][x] = world[y-1][x];
       if(world[y-1][x].getChecked() == false && world[y-1][x].getOccupied() == false && world[y-1][x].getDist()>s.getDist()){
@@ -43,9 +46,10 @@ class Grid{
         world[y-1][x].setNext(s);
         world[y-1][x].setChecked(true);
         fringe.add(world[y-1][x]);
+        extra.add(world[y-1][x]);
         pather();
       }
-    }catch(Exception e){return;}
+    }catch(Exception e){}
     try{
       //Sector world[y][x+1] = world[y][x+1];
       if(world[y][x+1].getChecked() == false && world[y][x+1].getOccupied() == false && world[y][x+1].getDist()>s.getDist()){
@@ -53,9 +57,10 @@ class Grid{
         world[y][x+1].setNext(s);
         world[y][x+1].setChecked(true);
         fringe.add(world[y][x+1]);
+        extra.add(world[y][x+1]);
         pather();
       }
-    }catch(Exception e){return;}
+    }catch(Exception e){}
     try{
       //Sector world[y+1][x] = world[y+1][x];
       if(world[y+1][x].getChecked() == false && world[y+1][x].getOccupied() == false && world[y+1][x].getDist()>s.getDist()){
@@ -63,9 +68,10 @@ class Grid{
         world[y+1][x].setNext(s);
         world[y+1][x].setChecked(true);
         fringe.add(world[y+1][x]);
+        extra.add(world[y+1][x]);
         pather();
       }
-    }catch(Exception e){return;}
+    }catch(Exception e){}
     try{
       //Sector world[y][x-1] = world[y][x-1];
       if(world[y][x-1].getChecked() == false && world[y][x-1].getOccupied() == false && world[y][x-1].getDist()>s.getDist()){
@@ -73,9 +79,11 @@ class Grid{
         world[y][x-1].setNext(s);
         world[y][x-1].setChecked(true);
         fringe.add(world[y][x-1]);
+        extra.add(world[y][x-1]);
         pather();
       }
-    }catch(Exception e){return;}
+    }catch(Exception e){}
+    //pather();
   }
 
   
@@ -85,6 +93,10 @@ class Grid{
   
   
   void cpprep(){
+    /*for(Sector s : extra){
+      s.setcp();
+    }*/
+      
     for(int i = 0;i<14;i++){
       for(int j = 0;j<14;j++){
         world[i][j].setcp();

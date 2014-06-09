@@ -25,14 +25,14 @@ class Ship{
   void turn(){
     float angle = (atan2(target.cp.y-y,target.cp.x-x)-direction);
     //float angle = (atan2(50-x,50-y)-direction);
-    //println("First angle calculation: " + angle);
+    println("First angle calculation: " + angle);
     if(angle>90)direction -= -180;
     if(angle<-90)direction += 180;
-    float max = (90*(speed*(float)2/6))/(10*PI);
-    //println("Max is: "+max);
+    float max = (3*(speed*(float)2/6))/(10*PI);
+    println("Max is: "+max);
     if(angle>max)angle = max;
     if(angle<-1*max)angle = -1*max;
-    //println("Second angle calculation: " + angle);
+    println("Second angle calculation: " + angle);
     direction+=angle;
   }
   void act(){

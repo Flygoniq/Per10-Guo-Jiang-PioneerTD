@@ -4,7 +4,7 @@ import java.util.*;
 
 boolean drawgrid = false;
 boolean placeTower = false;
-boolean setTower = false;
+boolean setTower = true;
 Grid grid;
 float resources = 400;
 PTBoat tester;
@@ -21,6 +21,7 @@ void setup(){
   backGround();
   tester = new PTBoat();
   addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520);
+  current = Towers.get(0);
 }
 void backGround() {
   loadImages();

@@ -1,8 +1,9 @@
 class Ship{
   float health, attack;
-  float basespeed, speed, x, y, direction,traveled;
+  float basespeed, speed, x, y, direction;
   Sector target;
   PImage avatar;
+  boolean inplay = true;
   public Ship(){}
   public Ship(int hp, int atk, float spd){
     health = hp;
@@ -12,14 +13,12 @@ class Ship{
     x = 20;
     y = 0;
     direction = PI/2;
-    traveled = 0;
     target = grid.world[0][0];
   }
   
   void move(){
     x += speed*(float)2/6*cos(direction);
     y += speed*(float)2/6*sin(direction);
-    traveled += sqrt(sq(speed*(float)2/6*cos(direction))+sq(speed*(float)2/6*sin(direction)));
     if(sqrt(sq(x-target.cp.x)+sq(y-target.cp.y))<1)target=target.next;
   }
 
@@ -39,7 +38,7 @@ class Ship{
   void act(){
     turn();
     move();
-    println(target.y);
+    //println(target.y);
     if(target.y==560){
       wallhp -= attack;
       ships.remove(this);
@@ -76,12 +75,18 @@ class Ship{
   float getDamage() {
     return attack;
   }
+  boolean getInplay() {
+    return inplay;
+  }
+  
   void takeDamage(float n) {
     System.out.println(health);
     health = health - n;
     if (health <=0) {
       ships.remove(this);
       bcount --;
+      this.inplay = false;
+      resources += 40;
     }
   }
 }

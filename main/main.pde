@@ -23,8 +23,9 @@ void setup(){
   addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520,10);
   current = Towers.get(0);
   ships.add(tester);
-  bcount = 1;
   wallhp = 30;
+  Wave1();
+  bcount = 21;
 }
 void backGround() {
   loadImages();
@@ -43,12 +44,17 @@ void backGround() {
   image(RocketGun, 110,583);
   textSize(20);
   text("Resources",460,580);
-  textSize(32);
+  textSize(26);
   text(resources,460,630);
+  textSize(20);
+  fill(#E80000);
+  text("Health",400,580);
+  textSize(26);
+  text(wallhp,420,630);
 }
 
 void draw(){
-  println(bcount);
+  println(pcount);
   //System.out.println(tick);
   backGround();
   if (drawgrid){
@@ -91,7 +97,7 @@ void mouseClicked(){
   }
   if (checkMouse(20,60,585,625)) {
     current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,10,50,50);
-    System.out.println("damage of current" + current.getDamage());
+    //System.out.println("damage of current" + current.getDamage());
   }
   if (checkMouse(111,150,585,625)) {
     current = new Tower(RocketBase, RocketGun,RocketGun,100,100,50);

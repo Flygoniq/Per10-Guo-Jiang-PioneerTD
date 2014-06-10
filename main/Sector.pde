@@ -21,7 +21,7 @@ class Sector{
       cp = new Checkpoint(x+20,y+40);
     }
     try{
-      cp = new Checkpoint(((next.x+x)/2)+20,((next.y+y)/2)+20,next.cp);
+      cp = new Checkpoint(((next.x+x)/2)+20,((next.y+y)/2),next.cp);
     }catch(Exception e){
       return;
     }

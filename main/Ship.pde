@@ -1,15 +1,17 @@
 class Ship{
   float health, attack;
   float basespeed, speed, x, y, direction;
+  int reward;
   Sector target;
   PImage avatar;
   boolean inplay = true;
   public Ship(){}
-  public Ship(int hp, int atk, float spd){
+  public Ship(int hp, int atk, float spd, int rwd){
     health = hp;
     attack = atk;
     speed = spd;
     basespeed = spd;
+    reward = rwd;
     x = 20;
     y = 0;
     direction = PI/2;
@@ -41,6 +43,7 @@ class Ship{
     //println(target.y);
     if(target.y==560){
       wallhp -= attack;
+      attack = 0;
       ships.remove(this);
       bcount --;
     }
@@ -86,7 +89,7 @@ class Ship{
       ships.remove(this);
       bcount --;
       this.inplay = false;
-      resources += 40;
+      resources += reward;
     }
   }
 }

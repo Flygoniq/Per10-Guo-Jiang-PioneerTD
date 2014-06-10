@@ -77,6 +77,10 @@ class Projectile {
     Ycord += Yprogression;
     //println("part 3");
     if (destination != null) {
+      if (destination.getHealth() <= 0 || !(destination.getInplay())) {
+      destination = null;
+    }
+    else{
       //println("true");
       if (Ycord +20 > destination.getY()) {
         Angle = atan((destination.getX() - Xcord - 20)/(Ycord+20 - destination.getY()));
@@ -85,14 +89,27 @@ class Projectile {
         Angle = (-1*atan((destination.getX()-Xcord - 20)/(destination.getY() - Ycord - 20))) + PI;
       }
     
-      setXprogression(sin(Angle));
-      setYprogression(-1*cos(Angle));
-       if (dist(Xcord,Ycord,destination.getX(),destination.getY()) < 50) {
-         System.out.println("damage" +damage);
+      setXprogression(5*sin(Angle));
+      setYprogression(-5*cos(Angle));
+      println(dist(Xcord-20*cos(PI-Angle),Ycord-20*sin(PI-Angle),destination.getX(),destination.getY()));
+       if (dist(Xcord-20*cos(PI-Angle),Ycord-20*sin(PI-Angle),destination.getX(),destination.getY()) < 10) {
+         //System.out.println("damage" +damage);
       destination.takeDamage(damage);
       projectiles.remove(this);
       pcount --;
        }
+    }
+    }
+    else {
+      for(int i = 0; i<bcount; i++ ) {
+        float shipx = ships.get(i).getX();
+        float shipy = ships.get(i).getY();
+        if (dist(shipx,shipy,Xcord,Ycord) < 10){
+          ships.get(i).takeDamage(10);
+          this.setXcord(-300);
+          this.setYcord(-300);
+        }
+      }
     }
       pushMatrix();
       translate(Xcord,Ycord);

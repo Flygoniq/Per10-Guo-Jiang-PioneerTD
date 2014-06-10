@@ -19,7 +19,7 @@ class Grid{
   
   
   
-  boolean path(){
+  void path(){
     Queue<Sector> fringe= new LinkedList<Sector>();
     for(int i = 0;i<14;i++){
       for(int j = 0;j<14;j++){
@@ -37,7 +37,7 @@ class Grid{
       int x = s.x/40;
       int y = s.y/40;
       if(s.getChecked() == false){
-        println(x+","+y);
+        //println(x+","+y);
         s.setChecked(true);
         try{
           if(y>0 && world[y-1][x].getChecked() == false && world[y-1][x].getOccupied() == false){
@@ -73,7 +73,6 @@ class Grid{
         }catch(Exception e){}
       }
     }
-    return world[0][0].getChecked();
   }
     
     

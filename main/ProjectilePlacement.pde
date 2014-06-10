@@ -54,6 +54,6 @@ void Cannonfire() {
   if (m%30 > 10) {
     //println("part 2");
     //image(t.getProjectile(), t.getYcor(),t.getXcor());
-  addProjectile(t.getProjectile(),5*sin(t.getAngle()),-5*cos(t.getAngle()),t.getXcor(), t.getYcor() - 10,atan(-(mouseX -t.getXcor() - 20) / (mouseY-t.getYcor())),15);
+  addProjectile(t.getProjectile(),10*sin(t.getAngle()),-10*cos(t.getAngle()),t.getXcor(), t.getYcor() - 10,atan(-(mouseX -t.getXcor() - 20) / (mouseY-t.getYcor())),15);
   }
 }

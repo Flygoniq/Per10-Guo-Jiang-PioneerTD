@@ -42,8 +42,8 @@ class Tower{
   void setProjectile(PImage p) {
     projectile=p;
   }
-  float distanceToShip(ship s){
-    return sqrt(sq(Xcor+20-s.x)+sq(Ycor-y+20.x))
+  float distanceToShip(Ship s){
+    return sqrt(sq(Xcor+20-s.x)+sq(Ycor+20-s.y));
   }
   
   
@@ -107,7 +107,7 @@ class Tower{
     return result;
   }
 
-      
+
   boolean attack() {
       for (int i = 0; i < bcount; i++) {
          Ship s = ships.get(i);

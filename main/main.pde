@@ -6,8 +6,7 @@ boolean drawgrid = false;
 boolean placeTower = false;
 boolean setTower = true;
 Grid grid;
-float resources = 400;
-PTBoat tester;
+float resources;
 Tower current;
 boolean fire = true;
 float tick= 0;
@@ -19,12 +18,11 @@ int wallhp;
 void setup(){
   grid = new Grid();
   backGround();
-  tester = new PTBoat();
   addTower(FalseTower,BaseCannon,LightBuoyProjectile,50,240,520,10);
   current = Towers.get(0);
-  ships.add(tester);
   bcount = 1;
   wallhp = 30;
+  resources = 400;
 }
 void backGround() {
   loadImages();
@@ -43,19 +41,20 @@ void backGround() {
   image(RocketGun, 110,583);
   textSize(20);
   text("Resources",460,580);
+  text("Health",380,580);
   textSize(32);
+  text(wallhp,380,630);
   text(resources,460,630);
 }
 
 void draw(){
-  println(bcount);
+  //println(count);
   //System.out.println(tick);
   backGround();
   if (drawgrid){
     drawGrid();
   }
   else{backGround();}
-  //println(mouseX + "," + mouseY);
   if(placeTower){
   setX(mouseX-20);
   setY(mouseY-20);
@@ -68,13 +67,7 @@ void draw(){
     drawGrid();
     image(current.getBuoy(),ghostx,ghosty);
   }
-  for(int i = 0;i<14;i++){
-    for(int j = 0;j<14;j++){
-      try{rect(grid.world[i][j].cp.x,grid.world[i][j].cp.y,2,2);}catch(Exception e){}
-    } 
-  }
-  //rect(tester.target.x,tester.target.y,40,40);
-  for(int i = 0;i<bcount;i++){
+  for(int i = 0;i<ships.size();i++){
     ships.get(i).act();
   }
   tick++;
@@ -90,11 +83,11 @@ void mouseClicked(){
     drawgrid = false;
   }
   if (checkMouse(20,60,585,625)) {
-    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,10,50,50);
+    current = new Tower(LightBuoyBase,LightBuoyGun,LightBuoyProjectile,50,50,15);
     System.out.println("damage of current" + current.getDamage());
   }
   if (checkMouse(111,150,585,625)) {
-    current = new Tower(RocketBase, RocketGun,RocketGun,100,100,50);
+    current = new Tower(RocketBase, RocketGun,RocketGun,100,100,30);
   }
   if (checkMouse("All Towers")){
     placeTower = true;

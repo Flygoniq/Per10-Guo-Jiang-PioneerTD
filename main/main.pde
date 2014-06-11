@@ -63,7 +63,6 @@ void backGround() {
 }
 
 void draw(){
-  println(mode);
   //System.out.println(tick);
   backGround();
   /*if (drawgrid){
@@ -129,18 +128,22 @@ void mouseClicked(){
         placeTower = true;
       }
       else if (placeTower) {
-        if (mouseY < 575 && grid.world[(int)(ghosty+20)/40][(int)(ghostx+20)/40].occupied == false && resources > current.getCost() && grid.path()){
-          addTower(current.getBuoy(), current.getGun(),current.getProjectile(),current.getFiringspeed(),(((int)((ghostx+20)/40))*40),(((int)((ghosty+20)/40))*40),current.getDamage());
+        if(mouseY < 575 && grid.world[(int)(ghosty+20)/40][(int)(ghostx+20)/40].occupied == false){
           grid.world[(int)(ghosty+20)/40][(int)(ghostx+20)/40].occupied = true;
+        }
+        if (resources > current.getCost() && grid.path()){
+          addTower(current.getBuoy(), current.getGun(),current.getProjectile(),current.getFiringspeed(),(((int)((ghostx+20)/40))*40),(((int)((ghosty+20)/40))*40),current.getDamage());
           println((int)(ghostx+20)/40);
           println((int)(ghosty+20)/40);
           setTower = true;
           placeTower = false;
           resources = resources - current.getCost();
         }else{
+          println("rejected");
           m--;
           setTower = true;
           placeTower = false;
+          grid.world[(int)(ghosty+20)/40][(int)(ghostx+20)/40].occupied = false;
           grid.path();
         }
       }
